@@ -14,7 +14,7 @@ BuildRequires:  kde4-macros
 BuildRequires:  automoc
 BuildRequires:  glib2-devel
 BuildRequires:  gstreamer0.10-devel
-BuildRequires:  libgstreamer-plugins-base0.10-devel
+#BuildRequires:  libgstreamer-plugins-base0.10-devel
 
 Requires:       gstreamer0.10-plugins-base
 
