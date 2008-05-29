@@ -3,22 +3,31 @@
 Name:           phonon
 Summary:        KDE4 Multimedia Framework 
 Version:        4.2
-Release:        %mkrel 0.%{svn}.1
+Release:        %mkrel 0.%{svn}.2
 Url:            http://websvn.kde.org/branches/phonon/4.2/
 License:        LGPL v2+
 Group:          Graphical desktop/KDE
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.%{svn}.tar.bz2
+BuildRequires:  qt4-devel
+BuildRequires:  kde4-macros
+BuildRequires:  automoc
+BuildRequires:  glib2-devel
+BuildRequires:  gstreamer0.10-devel
+BuildRequires:  libgstreamer-plugins-base0.10-devel
+
+Requires:       gstreamer0.10-plugins-base
 
 %description
 Phonon is  the KDE4 Multimedia Framework
 
 %files
 %defattr(-,root,root)
-%{_kde_datadir}/kde4/services/phononbackends/gstreamer.desktop
-%{_kde_libdir}/kde4/plugins/phonon_backend/phonon_gstreamer.a
+# TODO Fix BuildRequires
+# %{_kde_datadir}/kde4/services/phononbackends/gstreamer.desktop
+# %{_kde_libdir}/kde4/plugins/phonon_backend/phonon_gstreamer.a
 
-#------------------------------------------------
+#--------------------------------------------------------------------
 
 %define phononexperimental_major 4
 %define libphononexperimental %mklibname phononexperimental %phononexperimental_major
@@ -40,7 +49,7 @@ Phonon library.
 %defattr(-,root,root)
 %_kde_libdir/libphononexperimental.so.%{phononexperimental_major}*
 
-#------------------------------------------------
+#--------------------------------------------------------------------
 
 %define phonon_major 4
 %define libphonon %mklibname phonon %phonon_major
@@ -62,8 +71,7 @@ Phonon library.
 %defattr(-,root,root)
 %_kde_libdir/libphonon.so.%{phonon_major}*
 
-#------------------------------------------------
-
+#--------------------------------------------------------------------
 
 %package devel
 Group: Development/KDE and Qt
@@ -87,7 +95,7 @@ browsing.
 %{_kde_libdir}/pkgconfig/phonon.pc
 %{_kde_datadir}/dbus-1/interfaces/org.kde.Phonon.AudioOutput.xml
 
-#------------------------------------------------
+#--------------------------------------------------------------------
 
 %prep
 %setup -q 
