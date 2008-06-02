@@ -1,9 +1,9 @@
-%define         svn   814039
+%define         svn   815960
 
 Name:           phonon
 Summary:        KDE4 Multimedia Framework 
 Version:        4.2
-Release:        %mkrel 0.%{svn}.2
+Release:        %mkrel 0.%{svn}.1
 Url:            http://websvn.kde.org/branches/phonon/4.2/
 License:        LGPL v2+
 Group:          Graphical desktop/KDE
@@ -13,19 +13,10 @@ BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
 BuildRequires:  glib2-devel
-BuildRequires:  gstreamer0.10-devel
-#BuildRequires:  libgstreamer-plugins-base0.10-devel
-
-Requires:       gstreamer0.10-plugins-base
+BuildRequires:  libxml2-devel
 
 %description
 Phonon is  the KDE4 Multimedia Framework
-
-%files
-%defattr(-,root,root)
-# TODO Fix BuildRequires
-# %{_kde_datadir}/kde4/services/phononbackends/gstreamer.desktop
-# %{_kde_libdir}/kde4/plugins/phonon_backend/phonon_gstreamer.a
 
 #--------------------------------------------------------------------
 
@@ -51,6 +42,18 @@ Phonon library.
 
 #--------------------------------------------------------------------
 
+%package common
+Summary: Phonon common files
+Group: System/Libraries
+
+%description common
+Phonon dbus interfaces and commonf files.
+
+%files common
+%{_kde_datadir}/dbus-1/interfaces/org.kde.Phonon.AudioOutput.xml
+
+#--------------------------------------------------------------------
+
 %define phonon_major 4
 %define libphonon %mklibname phonon %phonon_major
 
@@ -59,7 +62,7 @@ Summary: Phonon library
 Group: System/Libraries
 Conflicts: %{_lib}kdecore5 >= 30000000:3.80.3
 Obsoletes: %{_lib}phonon5 < 3.93.0-0.714006.1
-
+Requires: phonon-common
 
 %description -n %libphonon
 Phonon library.
@@ -70,6 +73,24 @@ Phonon library.
 %files -n %libphonon
 %defattr(-,root,root)
 %_kde_libdir/libphonon.so.%{phonon_major}*
+
+#-----------------------------------------------------------------------------
+
+%package -n phonon-gstreamer
+Summary: GStreamer backend to Phonon
+Group: Sound
+BuildRequires:  gstreamer0.10-devel
+BuildRequires: libxine-devel
+Requires: gstreamer0.10-plugins-good
+Provides: phonon-backend
+
+%description -n phonon-gstreamer
+GStreamer backend to Phonon.
+
+%files -n phonon-gstreamer
+%defattr(-,root,root)
+%_kde_libdir/kde4/plugins/phonon_backend/*
+%_kde_datadir/kde4/services/phononbackends/gstreamer.desktop
 
 #--------------------------------------------------------------------
 
@@ -93,7 +114,6 @@ browsing.
 %{_kde_libdir}/libphonon.so
 %{_kde_libdir}/libphononexperimental.so
 %{_kde_libdir}/pkgconfig/phonon.pc
-%{_kde_datadir}/dbus-1/interfaces/org.kde.Phonon.AudioOutput.xml
 
 #--------------------------------------------------------------------
 
@@ -109,4 +129,4 @@ cd build
 make DESTDIR=%buildroot install
 
 %clean
-%{__rm} -rf "%{buildroot}"
+rm -rf "%{buildroot}"
