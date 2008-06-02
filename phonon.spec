@@ -79,8 +79,8 @@ Phonon library.
 %package -n phonon-gstreamer
 Summary: GStreamer backend to Phonon
 Group: Sound
-BuildRequires:  gstreamer0.10-devel
-BuildRequires: libxine-devel
+BuildRequires: libgstreamer-devel
+BuildRequires: libgstreamer-plugins-base-devel
 Requires: gstreamer0.10-plugins-good
 Provides: phonon-backend
 
