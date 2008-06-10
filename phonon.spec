@@ -1,4 +1,4 @@
-%define         svn   815960
+%define         svn   819157
 
 Name:           phonon
 Summary:        KDE4 Multimedia Framework 
@@ -50,7 +50,7 @@ Group: System/Libraries
 Phonon dbus interfaces and commonf files.
 
 %files common
-%{_kde_datadir}/dbus-1/interfaces/org.kde.Phonon.AudioOutput.xml
+%{_datadir}/dbus-1/interfaces/org.kde.Phonon.AudioOutput.xml
 
 #--------------------------------------------------------------------
 
@@ -99,7 +99,6 @@ Group: Development/KDE and Qt
 Summary: Header files and documentation for compiling KDE applications
 Requires: %libphononexperimental = %version
 Requires: %libphonon = %version
-Requires: %name = %version
 Conflicts: kdelibs4-devel < 4.0.80-5
 
 %description devel
