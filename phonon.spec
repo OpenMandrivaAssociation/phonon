@@ -3,7 +3,7 @@
 Name:           phonon
 Summary:        KDE4 Multimedia Framework 
 Version:        4.2
-Release:        %mkrel 0.%{svn}.1
+Release:        %mkrel 0.%{svn}.2
 Url:            http://websvn.kde.org/branches/phonon/4.2/
 License:        LGPL v2+
 Group:          Graphical desktop/KDE
@@ -42,18 +42,6 @@ Phonon library.
 
 #--------------------------------------------------------------------
 
-%package common
-Summary: Phonon common files
-Group: System/Libraries
-
-%description common
-Phonon dbus interfaces and commonf files.
-
-%files common
-%{_datadir}/dbus-1/interfaces/org.kde.Phonon.AudioOutput.xml
-
-#--------------------------------------------------------------------
-
 %define phonon_major 4
 %define libphonon %mklibname phonon %phonon_major
 
@@ -62,7 +50,6 @@ Summary: Phonon library
 Group: System/Libraries
 Conflicts: %{_lib}kdecore5 >= 30000000:3.80.3
 Obsoletes: %{_lib}phonon5 < 3.93.0-0.714006.1
-Requires: phonon-common
 
 %description -n %libphonon
 Phonon library.
@@ -100,6 +87,7 @@ Summary: Header files and documentation for compiling KDE applications
 Requires: %libphononexperimental = %version
 Requires: %libphonon = %version
 Conflicts: kdelibs4-devel < 4.0.80-5
+Obsoletes: phonon-common
 
 %description devel
 This package includes the header files you will need to compile applications
@@ -113,6 +101,7 @@ browsing.
 %{_kde_libdir}/libphonon.so
 %{_kde_libdir}/libphononexperimental.so
 %{_kde_libdir}/pkgconfig/phonon.pc
+%{_kde_datadir}/dbus-1/interfaces/org.kde.Phonon.AudioOutput.xml
 
 #--------------------------------------------------------------------
 
