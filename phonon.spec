@@ -113,8 +113,7 @@ browsing.
 %make
 
 %install
-cd build
-make DESTDIR=%buildroot install
+%makeinstall_std -C build
 
 %clean
 rm -rf "%{buildroot}"
