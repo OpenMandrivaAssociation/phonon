@@ -4,8 +4,8 @@ Name:           phonon
 Summary:        KDE4 Multimedia Framework 
 Version:        4.2
 Release:        %mkrel 0.%{svn}.2
-Url:            http://websvn.kde.org/branches/phonon/4.2/
-License:        LGPL v2+
+Url:            http://phonon.kde.org/
+License:        LGPLv2+
 Group:          Graphical desktop/KDE
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.%{svn}.tar.bz2
@@ -16,7 +16,7 @@ BuildRequires:  glib2-devel
 BuildRequires:  libxml2-devel
 
 %description
-Phonon is  the KDE4 Multimedia Framework
+Phonon is the KDE4 Multimedia Framework
 
 #--------------------------------------------------------------------
 
@@ -113,6 +113,7 @@ browsing.
 %make
 
 %install
+rm -fr %buildroot
 %makeinstall_std -C build
 
 %clean
