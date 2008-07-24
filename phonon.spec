@@ -1,14 +1,12 @@
-%define         svn   819157
-
 Name:           phonon
 Summary:        KDE4 Multimedia Framework 
-Version:        4.2
-Release:        %mkrel 0.%{svn}.2
+Version:        4.2.0
+Release:        %mkrel 1
 Url:            http://phonon.kde.org/
 License:        LGPLv2+
 Group:          Graphical desktop/KDE
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        %{name}-%{version}.%{svn}.tar.bz2
+Source0: 	ftp://ftp.kde.org/pub/kde/stable/%name/%version/%name-%version.tar.bz2
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
