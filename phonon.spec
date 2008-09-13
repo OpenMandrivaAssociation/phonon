@@ -1,7 +1,7 @@
 Name:           phonon
 Summary:        KDE4 Multimedia Framework 
 Version:        4.2.0
-Release:        %mkrel 4
+Release:        %mkrel 5
 Url:            http://phonon.kde.org/
 License:        LGPLv2+
 Group:          Graphical desktop/KDE
@@ -77,6 +77,7 @@ GStreamer backend to Phonon.
 %defattr(-,root,root)
 %_kde_libdir/kde4/plugins/phonon_backend/*
 %_kde_datadir/kde4/services/phononbackends/gstreamer.desktop
+%attr(0755,root,root) %_sysconfdir/profile.d/55phonon-gstreamer.*
 
 #--------------------------------------------------------------------
 
@@ -115,6 +116,23 @@ browsing.
 %install
 rm -fr %buildroot
 %makeinstall_std -C build
+
+# Profiles for gstreamer pulse
+mkdir -p %buildroot%_sysconfdir/profile.d
+cat > %buildroot%_sysconfdir/profile.d/55phonon-gstreamer.sh << EOF
+#!/bin/bash
+
+if [ -z \${PHONON_GST_AUDIOSINK} ]; then
+    PHONON_GST_AUDIOSINK=pulse
+    export PHONON_GST_AUDIOSINK
+fi
+EOF
+
+cat > %buildroot%_sysconfdir/profile.d/55phonon-gstreamer.csh << EOF
+if ! ( \$?PHONON_GST_AUDIOSINK ) then
+    setenv PHONON_GST_AUDIOSINK pulse
+endif
+EOF
 
 %clean
 rm -rf "%{buildroot}"
