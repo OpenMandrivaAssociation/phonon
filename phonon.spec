@@ -1,7 +1,7 @@
 Name:           phonon
 Summary:        KDE4 Multimedia Framework 
 Version:        4.2.0
-Release:        %mkrel 5
+Release:        %mkrel 6
 Url:            http://phonon.kde.org/
 License:        LGPLv2+
 Group:          Graphical desktop/KDE
@@ -123,14 +123,14 @@ cat > %buildroot%_sysconfdir/profile.d/55phonon-gstreamer.sh << EOF
 #!/bin/bash
 
 if [ -z \${PHONON_GST_AUDIOSINK} ]; then
-    PHONON_GST_AUDIOSINK=pulse
+    PHONON_GST_AUDIOSINK=pulsesink
     export PHONON_GST_AUDIOSINK
 fi
 EOF
 
 cat > %buildroot%_sysconfdir/profile.d/55phonon-gstreamer.csh << EOF
 if ! ( \$?PHONON_GST_AUDIOSINK ) then
-    setenv PHONON_GST_AUDIOSINK pulse
+    setenv PHONON_GST_AUDIOSINK pulsesink
 endif
 EOF
 
