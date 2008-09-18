@@ -1,7 +1,7 @@
 Name:           phonon
 Summary:        KDE4 Multimedia Framework 
 Version:        4.2.0
-Release:        %mkrel 8
+Release:        %mkrel 9
 Url:            http://phonon.kde.org/
 License:        LGPLv2+
 Group:          Graphical desktop/KDE
@@ -9,6 +9,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0: ftp://ftp.kde.org/pub/kde/stable/%name/%version/%name-%version.tar.bz2
 Patch0: phonon-4.2.0-branch-diff-855994.patch
 Patch1: phonon-4.2.0-set-glib-application-name.patch
+Patch2: phonon-4.2.0-pulseaudio-detect-and-cosmetics.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -78,7 +79,6 @@ GStreamer backend to Phonon.
 %defattr(-,root,root)
 %_kde_libdir/kde4/plugins/phonon_backend/*
 %_kde_datadir/kde4/services/phononbackends/gstreamer.desktop
-%attr(0755,root,root) %_sysconfdir/profile.d/55phonon-gstreamer.*
 
 #--------------------------------------------------------------------
 
@@ -110,6 +110,7 @@ browsing.
 %setup -q 
 %patch0 -p1
 %patch1 -p0
+%patch2 -p0
 
 %build
 %cmake_kde4
@@ -118,23 +119,6 @@ browsing.
 %install
 rm -fr %buildroot
 %makeinstall_std -C build
-
-# Profiles for gstreamer auto
-mkdir -p %buildroot%_sysconfdir/profile.d
-cat > %buildroot%_sysconfdir/profile.d/55phonon-gstreamer.sh << EOF
-#!/bin/bash
-
-if [ -z \${PHONON_GST_AUDIOSINK} ]; then
-    PHONON_GST_AUDIOSINK=autoaudiosink
-    export PHONON_GST_AUDIOSINK
-fi
-EOF
-
-cat > %buildroot%_sysconfdir/profile.d/55phonon-gstreamer.csh << EOF
-if ! ( \$?PHONON_GST_AUDIOSINK ) then
-    setenv PHONON_GST_AUDIOSINK autoaudiosink
-endif
-EOF
 
 %clean
 rm -rf "%{buildroot}"
