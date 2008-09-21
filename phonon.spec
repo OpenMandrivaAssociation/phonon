@@ -1,20 +1,23 @@
 Name:           phonon
 Summary:        KDE4 Multimedia Framework 
 Version:        4.2.0
-Release:        %mkrel 10
+Release:        %mkrel 11
 Url:            http://phonon.kde.org/
 License:        LGPLv2+
 Group:          Graphical desktop/KDE
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0: ftp://ftp.kde.org/pub/kde/stable/%name/%version/%name-%version.tar.bz2
+Source1: %{name}-gstreamer.svg
 Patch0: phonon-4.2.0-branch-diff-855994.patch
 Patch1: phonon-4.2.0-set-glib-application-name.patch
 Patch2: phonon-4.2.0-pulseaudio-detect-and-cosmetics.patch
+Patch3: phonon-4.2.0-stream-extract-metadata.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
 BuildRequires:  glib2-devel
 BuildRequires:  libxml2-devel
+BuildRequires:  imagemagick
 
 %description
 Phonon is the KDE4 Multimedia Framework
@@ -80,6 +83,7 @@ GStreamer backend to Phonon.
 %defattr(-,root,root)
 %_kde_libdir/kde4/plugins/phonon_backend/*
 %_kde_datadir/kde4/services/phononbackends/gstreamer.desktop
+%_datadir/icons/hicolor/*
 
 #--------------------------------------------------------------------
 
@@ -112,6 +116,7 @@ browsing.
 %patch0 -p1
 %patch1 -p0
 %patch2 -p0
+%patch3 -p0
 
 %build
 %cmake_kde4
@@ -120,6 +125,13 @@ browsing.
 %install
 rm -fr %buildroot
 %makeinstall_std -C build
+
+# Make a nice icon
+install -D -m 0644 %{_sourcedir}/%{name}-gstreamer.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}-gstreamer.svg
+for size in 16 22 32 48 64 128; do
+  mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps
+  convert -geometry ${size}x${size} %{_sourcedir}/%{name}-gstreamer.svg %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/%{name}-gstreamer.png
+done
 
 %clean
 rm -rf "%{buildroot}"
