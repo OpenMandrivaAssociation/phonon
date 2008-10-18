@@ -1,7 +1,7 @@
 Name:           phonon
 Summary:        KDE4 Multimedia Framework 
 Version:        4.2.0
-Release:        %mkrel 13
+Release:        %mkrel 14
 Url:            http://phonon.kde.org/
 License:        LGPLv2+
 Group:          Graphical desktop/KDE
@@ -12,6 +12,7 @@ Patch0: phonon-4.2.0-branch-diff-855994.patch
 Patch1: phonon-4.2.0-set-glib-application-name.patch
 Patch2: phonon-4.2.0-pulseaudio-detect-and-cosmetics.patch
 Patch3: phonon-4.2.0-stream-extract-metadata.patch
+Patch4: phonon-4.2.0-ogg-mime-type.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -121,6 +122,7 @@ browsing.
 %patch1 -p0
 %patch2 -p0
 %patch3 -p0
+%patch4 -p0
 
 %build
 %cmake_kde4
