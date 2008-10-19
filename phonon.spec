@@ -1,18 +1,20 @@
+%define         svn       866326
+
 Name:           phonon
 Summary:        KDE4 Multimedia Framework 
-Version:        4.2.0
-Release:        %mkrel 14
+Version:        4.2.70
+Release:        %mkrel 0.%svn.1
 Url:            http://phonon.kde.org/
 License:        LGPLv2+
 Group:          Graphical desktop/KDE
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0: ftp://ftp.kde.org/pub/kde/stable/%name/%version/%name-%version.tar.bz2
+Source0: ftp://ftp.kde.org/pub/kde/stable/%name/%version/%name-%version.%svn.tar.bz2
 Source1: %{name}-gstreamer.svg
-Patch0: phonon-4.2.0-branch-diff-855994.patch
 Patch1: phonon-4.2.0-set-glib-application-name.patch
 Patch2: phonon-4.2.0-pulseaudio-detect-and-cosmetics.patch
 Patch3: phonon-4.2.0-stream-extract-metadata.patch
-Patch4: phonon-4.2.0-ogg-mime-type.patch
+Patch4: phonon-4.2.70-phonon-xine-pulseaudio-not-advanced.patch
+Patch5: phonon-4.2.0-ogg-mime-type.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -86,9 +88,30 @@ GStreamer backend to Phonon.
 
 %files -n phonon-gstreamer
 %defattr(-,root,root)
-%_kde_libdir/kde4/plugins/phonon_backend/*
+%dir %_kde_libdir/kde4/plugins/phonon_backend
+%_kde_libdir/kde4/plugins/phonon_backend/phonon_gstreamer.so
 %_kde_datadir/kde4/services/phononbackends/gstreamer.desktop
 %_datadir/icons/hicolor/*
+
+#-----------------------------------------------------------------------------
+
+%package -n phonon-xine
+Summary: Xine backend to Phonon
+Group: Sound
+BuildRequires: libxine-devel
+Obsoletes: kde4-phonon-xine < 1:3.93.0-0.714129.2
+Requires: xine-plugins
+Requires: xine-pulse
+Provides: phonon-backend = 4.2.0
+
+%description -n phonon-xine
+Xine backend to Phonon.
+
+%files -n phonon-xine
+%defattr(-,root,root)
+%dir %_kde_libdir/kde4/plugins/phonon_backend
+%_kde_libdir/kde4/plugins/phonon_backend/phonon_xine.so
+%_kde_datadir/kde4/services/phononbackends/xine.desktop
 
 #--------------------------------------------------------------------
 
@@ -117,12 +140,12 @@ browsing.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q 
-%patch0 -p1
+%setup -q  -n %name
 %patch1 -p0
 %patch2 -p0
 %patch3 -p0
 %patch4 -p0
+%patch5 -p0
 
 %build
 %cmake_kde4
