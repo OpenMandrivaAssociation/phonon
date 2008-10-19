@@ -3,7 +3,8 @@
 Name:           phonon
 Summary:        KDE4 Multimedia Framework 
 Version:        4.2.70
-Release:        %mkrel 0.%svn.1
+Release:        %mkrel 0.%svn.2
+Epoch:          1
 Url:            http://phonon.kde.org/
 License:        LGPLv2+
 Group:          Graphical desktop/KDE
@@ -81,7 +82,7 @@ Suggests: gstreamer0.10-plugins-ugly
 Suggests: gstreamer0.10-ffmpeg
 Suggests: gstreamer0.10-soup
 
-Provides: phonon-backend = %version
+Provides: phonon-backend = %epoch:%version
 
 %description -n phonon-gstreamer
 GStreamer backend to Phonon.
@@ -102,7 +103,7 @@ BuildRequires: libxine-devel
 Obsoletes: kde4-phonon-xine < 1:3.93.0-0.714129.2
 Requires: xine-plugins
 Requires: xine-pulse
-Provides: phonon-backend = 4.2.0
+Provides: phonon-backend = %epoch:%version
 
 %description -n phonon-xine
 Xine backend to Phonon.
@@ -118,8 +119,8 @@ Xine backend to Phonon.
 %package devel
 Group: Development/KDE and Qt
 Summary: Header files and documentation for compiling KDE applications
-Requires: %libphononexperimental = %version
-Requires: %libphonon = %version
+Requires: %libphononexperimental = %epoch:%version
+Requires: %libphonon = %epoch:%version
 Conflicts: kdelibs4-devel < 4.0.80-5
 Obsoletes: phonon-common
 
