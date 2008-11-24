@@ -1,15 +1,13 @@
-%define         svn       866326
-
-Name:           phonon
-Summary:        KDE4 Multimedia Framework 
-Version:        4.2.70
-Release:        %mkrel 0.%svn.2
-Epoch:          1
-Url:            http://phonon.kde.org/
-License:        LGPLv2+
-Group:          Graphical desktop/KDE
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0: ftp://ftp.kde.org/pub/kde/stable/%name/%version/%name-%version.%svn.tar.bz2
+Name: phonon
+Summary: KDE4 Multimedia Framework 
+Version: 4.2.80
+Release: %mkrel 1
+Epoch: 1
+Url: http://phonon.kde.org/
+License: LGPLv2+
+Group: Graphical desktop/KDE
+BuildRoot: %{_tmppath}/%{name}-%{version}-build
+Source0: ftp://ftp.kde.org/pub/kde/stable/%name/%version/%name-%version.tar.bz2
 Source1: %{name}-gstreamer.svg
 Patch1: phonon-4.2.0-set-glib-application-name.patch
 Patch2: phonon-4.2.0-pulseaudio-detect-and-cosmetics.patch
@@ -113,6 +111,7 @@ Xine backend to Phonon.
 %dir %_kde_libdir/kde4/plugins/phonon_backend
 %_kde_libdir/kde4/plugins/phonon_backend/phonon_xine.so
 %_kde_datadir/kde4/services/phononbackends/xine.desktop
+%_kde_iconsdir/*/*/*/phonon-xine.*
 
 #--------------------------------------------------------------------
 
@@ -141,7 +140,7 @@ browsing.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q  -n %name
+%setup -q 
 %patch1 -p0
 %patch2 -p0
 %patch3 -p0
