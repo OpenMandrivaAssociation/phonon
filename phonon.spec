@@ -2,7 +2,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.2.80
-Release: %mkrel 1
+Release: %mkrel 1.%svn.1
 Epoch: 1
 Url: http://phonon.kde.org/
 License: LGPLv2+
