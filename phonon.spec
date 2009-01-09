@@ -1,14 +1,14 @@
 %define svn 895450
 Name: phonon
 Summary: KDE4 Multimedia Framework 
-Version: 4.2.80
-Release: %mkrel 1.%svn.2
+Version: 4.2.96
+Release: %mkrel 1
 Epoch: 1
 Url: http://phonon.kde.org/
 License: LGPLv2+
 Group: Graphical desktop/KDE
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
-Source0: ftp://ftp.kde.org/pub/kde/stable/%name/%version/%name-%version.%svn.tar.bz2
+Source0: ftp://ftp.kde.org/pub/kde/stable/%name/%version/%name-%version.tar.bz2
 Source1: %{name}-gstreamer.svg
 Patch1: phonon-4.2.0-set-glib-application-name.patch
 Patch2: phonon-4.2.0-pulseaudio-detect-and-cosmetics.patch
@@ -142,7 +142,7 @@ browsing.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q  -n %name
+%setup -q  -n %name-%version
 %patch1 -p0
 %patch2 -p0
 %patch3 -p0
