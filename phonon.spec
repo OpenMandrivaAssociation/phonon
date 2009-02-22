@@ -12,7 +12,6 @@ Source1: %{name}-gstreamer.svg
 Patch1: phonon-4.2.0-set-glib-application-name.patch
 Patch2: phonon-4.2.0-pulseaudio-detect-and-cosmetics.patch
 Patch3: phonon-4.2.0-stream-extract-metadata.patch
-Patch4: phonon-4.2.70-phonon-xine-pulseaudio-not-advanced.patch
 Patch5: phonon-4.2.0-ogg-mime-type.patch
 Patch6: phonon-4.2.80-fix-url-parsing.patch
 BuildRequires:  qt4-devel
@@ -145,7 +144,6 @@ browsing.
 %patch1 -p0
 %patch2 -p0
 %patch3 -p0
-%patch4 -p0
 %patch5 -p0
 %patch6 -p0
 
