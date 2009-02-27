@@ -1,7 +1,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
-Version: 4.3.0
-Release: %mkrel 2
+Version: 4.3.1
+Release: %mkrel 1
 Epoch: 1
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -9,8 +9,8 @@ Group: Graphical desktop/KDE
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 Source0: ftp://ftp.kde.org/pub/kde/stable/%name/%version/%name-%version.tar.bz2
 Source1: %{name}-gstreamer.svg
-Patch1: phonon-4.2.0-set-glib-application-name.patch
-Patch2: phonon-4.2.0-stream-extract-metadata.patch
+Patch1: phonon-4.3.1-set-glib-application-name.patch
+Patch2: phonon-4.3.1-stream-extract-metadata.patch
 Patch3: phonon-4.2.0-ogg-mime-type.patch
 Patch4: phonon-4.2.80-fix-url-parsing.patch
 Patch5: phonon-4.3-mandriva-pulseaudio.patch
