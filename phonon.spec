@@ -1,7 +1,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.1
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 1
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -14,6 +14,8 @@ Patch2: phonon-4.3.1-stream-extract-metadata.patch
 Patch3: phonon-4.2.0-ogg-mime-type.patch
 Patch4: phonon-4.2.80-fix-url-parsing.patch
 Patch5: phonon-4.3-mandriva-pulseaudio.patch
+# Backport
+Patch100: phonon-backport-932980.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -146,6 +148,9 @@ browsing.
 %patch3 -p0
 %patch4 -p0
 %patch5 -p1
+
+#backports
+#patch100 -p0
 
 %build
 %cmake_kde4
