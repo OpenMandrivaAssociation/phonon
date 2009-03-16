@@ -1,8 +1,7 @@
-%define subrel 1
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.1
-Release: %mkrel 3
+Release: %mkrel 4
 Epoch: 1
 Url: http://phonon.kde.org/
 License: LGPLv2+
