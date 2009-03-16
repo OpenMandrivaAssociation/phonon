@@ -1,3 +1,4 @@
+%define subrel 1
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.1
@@ -16,6 +17,7 @@ Patch4: phonon-4.2.80-fix-url-parsing.patch
 Patch5: phonon-4.3-mandriva-pulseaudio.patch
 # Backport
 Patch100: phonon-backport-932980.patch
+Patch101: phonon-backport-932756.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -146,11 +148,12 @@ browsing.
 %patch1 -p0
 %patch2 -p0
 %patch3 -p0
-%patch4 -p0
+#%patch4 -p0
 %patch5 -p1
 
 #backports
-#patch100 -p0
+%patch100 -p0
+%patch101 -p0
 
 %build
 %cmake_kde4
