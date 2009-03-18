@@ -1,7 +1,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.1
-Release: %mkrel 5
+Release: %mkrel 6
 Epoch: 1
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -127,7 +127,7 @@ Requires: %libphononexperimental = %epoch:%version
 Requires: %libphonon = %epoch:%version
 Conflicts: kdelibs4-devel < 4.0.80-5
 Obsoletes: phonon-common
-Obsoletes:     %{_lib}arts1-devel < 30000001:1.5.10-4
+Obsoletes: %{_lib}arts1-devel < 30000001:1.5.10-6
 
 %description devel
 This package includes the header files you will need to compile applications
