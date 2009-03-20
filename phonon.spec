@@ -1,7 +1,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.1
-Release: %mkrel 8
+Release: %mkrel 9
 Epoch: 1
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -17,6 +17,7 @@ Patch5: phonon-4.3.1-plugin-api.patch
 # Backport
 Patch100: phonon-backport-932980.patch
 Patch101: phonon-backport-932756.patch
+Patch102: phonon-backport-941287.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -156,6 +157,7 @@ browsing.
 #backports
 %patch100 -p0
 %patch101 -p0
+%patch102 -p0
 
 %build
 %cmake_kde4
