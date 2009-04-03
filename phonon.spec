@@ -1,7 +1,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.1
-Release: %mkrel 9
+Release: %mkrel 10
 Epoch: 1
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -78,8 +78,6 @@ Summary: GStreamer backend to Phonon
 Group: Sound
 BuildRequires: libgstreamer-devel
 BuildRequires: libgstreamer-plugins-base-devel
-Obsoletes:     arts < 30000001:1.5.10-4
-Obsoletes:     %{_lib}arts1 < 30000001:1.5.10-4
 Requires: gstreamer0.10-plugins-good
 Requires: gstreamer0.10-pulse
 Suggests: gstreamer0.10-plugins-ugly
@@ -128,7 +126,6 @@ Requires: %libphononexperimental = %epoch:%version
 Requires: %libphonon = %epoch:%version
 Conflicts: kdelibs4-devel < 4.0.80-5
 Obsoletes: phonon-common
-Obsoletes: %{_lib}arts1-devel < 30000001:1.5.10-4
 
 %description devel
 This package includes the header files you will need to compile applications
