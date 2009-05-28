@@ -1,7 +1,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.1
-Release: %mkrel 11
+Release: %mkrel 12
 Epoch: 1
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -18,6 +18,7 @@ Patch5: phonon-4.3.1-plugin-api.patch
 Patch100: phonon-backport-932980.patch
 Patch101: phonon-backport-932756.patch
 Patch102: phonon-backport-941287.patch
+Patch103: phonon-4.3.1-t973633-add-xine-equalizer-effect.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -154,6 +155,7 @@ browsing.
 %patch100 -p0
 %patch101 -p0
 %patch102 -p0
+%patch103 -p0
 
 %build
 %cmake_kde4
