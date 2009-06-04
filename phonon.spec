@@ -1,21 +1,24 @@
-%define svn 975368
-
 Name: phonon
 Summary: KDE4 Multimedia Framework 
-Version: 4.3.50
-Release: %mkrel 0.%svn.1
-Epoch: 1
+Version: 4.3.1
+Release: %mkrel 13
+Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
 Group: Graphical desktop/KDE
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
-Source0: ftp://ftp.kde.org/pub/kde/stable/%name/%version/%name-%version.%svn.tar.bz2
+Source0: ftp://ftp.kde.org/pub/kde/stable/%name/%version/%name-%version.tar.bz2
 Source1: %{name}-gstreamer.svg
-Patch2: phonon-4.3.50-stream-extract-metadata.patch
+Patch1: phonon-4.3.1-set-glib-application-name.patch
+Patch2: phonon-4.3.1-stream-extract-metadata.patch
 Patch3: phonon-4.2.0-ogg-mime-type.patch
-Patch4: phonon-4.3.50-mandriva-pulseaudio.patch
-Patch5: phonon-4.3.50-plugin-api.patch
+Patch4: phonon-4.3-mandriva-pulseaudio.patch
+Patch5: phonon-4.3.1-plugin-api.patch
 # Backport
+Patch100: phonon-backport-932980.patch
+Patch101: phonon-backport-932756.patch
+Patch102: phonon-backport-941287.patch
+Patch103: phonon-4.3.1-t973633-add-xine-equalizer-effect.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -141,11 +144,18 @@ browsing.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q  -n %name
+%setup -q  -n %name-%version
+%patch1 -p0
 %patch2 -p0
 %patch3 -p0
-%patch4 -p0
-%patch5 -p0
+%patch4 -p1
+%patch5 -p1
+
+#backports
+%patch100 -p0
+%patch101 -p0
+%patch102 -p0
+%patch103 -p0
 
 %build
 %cmake_kde4
@@ -164,3 +174,4 @@ done
 
 %clean
 rm -rf "%{buildroot}"
+
