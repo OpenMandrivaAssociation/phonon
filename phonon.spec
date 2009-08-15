@@ -1,7 +1,9 @@
+%define epoch_arts 30000001
+
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.1
-Release: %mkrel 13
+Release: %mkrel 14
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -83,6 +85,10 @@ Requires: gstreamer0.10-plugins-good
 Requires: gstreamer0.10-pulse
 Suggests: gstreamer0.10-ffmpeg
 Suggests: gstreamer0.10-soup
+%if %mdkversion >= 201000
+Obsoletes:      arts < %epoch_arts:1.5.10-9
+Obsoletes:      arts3 < %epoch_arts:1.5.10-9
+%end
 
 Provides: phonon-backend = %epoch:%version
 
@@ -119,13 +125,17 @@ Xine backend to Phonon.
 
 #--------------------------------------------------------------------
 
-%package devel
-Group: Development/KDE and Qt
-Summary: Header files and documentation for compiling KDE applications
-Requires: %libphononexperimental = %epoch:%version
-Requires: %libphonon = %epoch:%version
+%package   devel
+Group:     Development/KDE and Qt
+Summary:   Header files and documentation for compiling KDE applications
+Requires:  %libphononexperimental = %epoch:%version
+Requires:  %libphonon = %epoch:%version
 Conflicts: kdelibs4-devel < 4.0.80-5
 Obsoletes: phonon-common
+%if %mdkversion >= 201000
+Obsoletes: arts-devel< %epoch_arts:1.5.10-9
+Obsoletes: arts3-devel< %epoch_arts:1.5.10-9
+%end
 
 %description devel
 This package includes the header files you will need to compile applications
