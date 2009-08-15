@@ -88,7 +88,7 @@ Suggests: gstreamer0.10-soup
 %if %mdkversion >= 201000
 Obsoletes:      arts < %epoch_arts:1.5.10-9
 Obsoletes:      arts3 < %epoch_arts:1.5.10-9
-%end
+%endif
 
 Provides: phonon-backend = %epoch:%version
 
@@ -135,7 +135,7 @@ Obsoletes: phonon-common
 %if %mdkversion >= 201000
 Obsoletes: arts-devel< %epoch_arts:1.5.10-9
 Obsoletes: arts3-devel< %epoch_arts:1.5.10-9
-%end
+%endif
 
 %description devel
 This package includes the header files you will need to compile applications
