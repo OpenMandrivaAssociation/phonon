@@ -4,7 +4,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.50
-Release: %mkrel 2
+Release: %mkrel 3
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -13,8 +13,9 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-build
 # We're using trunk http://svn.kde.org/home/kde/trunk/kdesupport/phonon
 Source0: %name-%version.%{rev}.tar.bz2
 Source1: %{name}-gstreamer.svg
-Patch0: phonon-4.2.0-ogg-mime-type.patch
-Patch1: phonon-4.3-mandriva-pulseaudio.patch
+Patch0:  phonon-4.2.0-ogg-mime-type.patch
+Patch1:  phonon-4.3-mandriva-pulseaudio.patch
+Patch2:  phonon-4.3.50-fix-gstreamer-multiple-cd.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -149,6 +150,7 @@ browsing.
 %setup -q  -n %name-%version
 %patch0 -p0
 %patch1 -p1
+%patch2 -p1
 
 %build
 %cmake_kde4 \
