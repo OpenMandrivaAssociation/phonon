@@ -79,6 +79,7 @@ Group: Sound
 BuildRequires: libgstreamer-devel
 BuildRequires: libgstreamer-plugins-base-devel
 Requires: gstreamer0.10-plugins-good
+Requires: gstreamer0.10-plugins-base
 Suggests: gstreamer0.10-ffmpeg
 Suggests: gstreamer0.10-soup
 %if %mdkversion >= 201000
