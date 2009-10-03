@@ -1,10 +1,10 @@
 %define epoch_arts 30000001
-%define rev 1027569
+%define rev 1030942
 
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.50
-Release: %mkrel 8
+Release: %mkrel 9
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -16,7 +16,6 @@ Source1: %{name}-gstreamer.svg
 Patch0:  phonon-4.2.0-ogg-mime-type.patch
 # (cg) For the latest version of the below patch see: http://colin.guthr.ie/git/phonon/log/?h=pulse
 Patch2:  phonon-4.3-pulseaudio.patch
-Patch3:  phonon-4.3.50-fix-gstreamer-multiple-cd.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -153,7 +152,6 @@ browsing.
 %setup -q  -n %name-%version
 %patch0 -p0
 %patch2 -p1
-%patch3 -p1
 
 %build
 %cmake_kde4 \
