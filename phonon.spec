@@ -4,7 +4,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.50
-Release: %mkrel 14
+Release: %mkrel 15
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -111,6 +111,7 @@ Group: Sound
 BuildRequires: libxine-devel
 Obsoletes: kde4-phonon-xine < 1:3.93.0-0.714129.2
 Requires: xine-plugins
+Suggests: xine-pulse
 Provides: phonon-backend = %epoch:%version
 
 %description -n phonon-xine
