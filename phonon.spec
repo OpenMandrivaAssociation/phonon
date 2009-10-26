@@ -4,7 +4,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.50
-Release: %mkrel 16
+Release: %mkrel 17
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -21,6 +21,7 @@ Patch4:  phonon-4.3.50-gstreamer-fix-changing-CD-audio-track2.patch
 Patch5:  phonon-4.3.50-gstreamer-fix-titles2.patch
 Patch6:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
 Patch7:  phonon-4.3.50-add-dvd-support.patch
+Patch8:  phonon-4.3.50-fix-decodebin-usage.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -164,6 +165,7 @@ browsing.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p0
 
 %build
 %cmake_kde4 \
