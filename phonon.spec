@@ -4,7 +4,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.50
-Release: %mkrel 18
+Release: %mkrel 19
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -85,6 +85,7 @@ BuildRequires: libgstreamer-devel
 BuildRequires: libgstreamer-plugins-base-devel
 Requires: gstreamer0.10-plugins-good
 Requires: gstreamer0.10-plugins-base
+Requires: gstreamer0.10-plugins-ugly
 Suggests: gstreamer0.10-ffmpeg
 Suggests: gstreamer0.10-soup
 Suggests: gstreamer0.10-pulse
