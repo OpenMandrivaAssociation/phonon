@@ -1,10 +1,10 @@
 %define epoch_arts 30000001
-%define rev 1030942
+%define rev 1052709
 
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.50
-Release: %mkrel 19
+Release: %mkrel 20
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -14,14 +14,10 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-build
 Source0: %name-%version.%{rev}.tar.bz2
 Source1: %{name}-gstreamer.svg
 Patch0:  phonon-4.2.0-ogg-mime-type.patch
-# (cg) For the latest version of the below patch see: http://colin.guthr.ie/git/phonon/log/?h=pulse
-Patch2:  phonon-4.3-pulseaudio.patch
-Patch3:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
-Patch4:  phonon-4.3.50-gstreamer-fix-changing-CD-audio-track2.patch
-Patch5:  phonon-4.3.50-gstreamer-fix-titles2.patch
-Patch6:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
-Patch7:  phonon-4.3.50-add-dvd-support.patch
-Patch8:  phonon-4.3.50-fix-decodebin-usage.patch
+Patch1:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
+Patch2:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
+Patch3:  phonon-4.3.50-fix-decodebin-usage.patch
+Patch4:  phonon-4.3.50-ignore-pulse-version.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -160,13 +156,10 @@ browsing.
 %prep
 %setup -q  -n %name-%version
 %patch0 -p0
+%patch1 -p1
 %patch2 -p1
-%patch3 -p1
+%patch3 -p0
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p0
 
 %build
 %cmake_kde4 \
