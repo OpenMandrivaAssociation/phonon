@@ -4,7 +4,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.50
-Release: %mkrel 20
+Release: %mkrel 21
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -18,6 +18,7 @@ Patch1:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
 Patch2:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
 Patch3:  phonon-4.3.50-fix-decodebin-usage.patch
 Patch4:  phonon-4.3.50-ignore-pulse-version.patch
+Patch5:  phonon-4.3.50-pulseaudio-allow-stream-reuse.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -160,6 +161,7 @@ browsing.
 %patch2 -p1
 %patch3 -p0
 %patch4 -p1
+%patch5 -p1
 
 %build
 %cmake_kde4 \
