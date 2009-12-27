@@ -3,15 +3,15 @@
 
 Name: phonon
 Summary: KDE4 Multimedia Framework 
-Version: 4.3.50
-Release: %mkrel 21
+Version: 4.3.80
+Release: %mkrel 1
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
 Group: Graphical desktop/KDE
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 # We're using trunk http://svn.kde.org/home/kde/trunk/kdesupport/phonon
-Source0: %name-%version.%{rev}.tar.bz2
+Source0: http://fr2.rpmfind.net/linux/KDE/unstable/phonon/%name-%version.tar.bz2
 Source1: %{name}-gstreamer.svg
 Patch0:  phonon-4.2.0-ogg-mime-type.patch
 Patch1:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
@@ -161,7 +161,6 @@ browsing.
 %patch2 -p1
 %patch3 -p0
 %patch4 -p1
-%patch5 -p1
 
 %build
 %cmake_kde4 \
