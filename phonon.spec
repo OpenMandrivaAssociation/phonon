@@ -19,6 +19,7 @@ Patch2:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
 Patch3:  phonon-4.3.50-fix-decodebin-usage.patch
 Patch4:  phonon-4.3.50-ignore-pulse-version.patch
 Patch5:  phonon-4.3.80-fix-gstreamer-pulseaudio-deadlock.patch
+Patch6:  phonon-4.3.80-fix-xine-pulseaudio-init.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -162,6 +163,7 @@ browsing.
 %patch3 -p0
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 %cmake_kde4 \
