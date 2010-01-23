@@ -4,7 +4,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.80
-Release: %mkrel 3
+Release: %mkrel 4
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -13,11 +13,12 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-build
 # We're using trunk http://svn.kde.org/home/kde/trunk/kdesupport/phonon
 Source0: %name-%version-r%rev.tar.bz2
 Source1: %{name}-gstreamer.svg
-Patch1:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
-Patch2:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
-Patch3:  phonon-4.3.50-fix-decodebin-usage.patch
+Patch0:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
+Patch1:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
+Patch2:  phonon-4.3.50-fix-decodebin-usage.patch
 # (cg) NB This version hack is only needed for 2010.0... added here too for ease of backporting
-Patch4:  phonon-4.3.50-ignore-pulse-version.patch
+Patch3:  phonon-4.3.50-ignore-pulse-version.patch
+Patch4:  phonon-4.3.80-pulsecleanup.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
