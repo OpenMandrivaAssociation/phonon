@@ -1,5 +1,5 @@
 %define epoch_arts 30000001
-%define rev 1052709
+%define rev 1079069
 
 Name: phonon
 Summary: KDE4 Multimedia Framework 
@@ -11,15 +11,13 @@ License: LGPLv2+
 Group: Graphical desktop/KDE
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 # We're using trunk http://svn.kde.org/home/kde/trunk/kdesupport/phonon
-Source0: http://fr2.rpmfind.net/linux/KDE/unstable/phonon/%name-%version.tar.bz2
+Source0: %name-%version-r%rev.tar.bz2
 Source1: %{name}-gstreamer.svg
-Patch0:  phonon-4.2.0-ogg-mime-type.patch
 Patch1:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
 Patch2:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
 Patch3:  phonon-4.3.50-fix-decodebin-usage.patch
+# (cg) NB This version hack is only needed for 2010.0... added here too for ease of backporting
 Patch4:  phonon-4.3.50-ignore-pulse-version.patch
-Patch5:  phonon-4.3.80-fix-gstreamer-pulseaudio-deadlock.patch
-Patch6:  phonon-4.3.80-fix-xine-pulseaudio-init.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -157,13 +155,10 @@ browsing.
 
 %prep
 %setup -q  -n %name-%version
-%patch0 -p0
 %patch1 -p1
 %patch2 -p1
 %patch3 -p0
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
 
 %build
 %cmake_kde4 \
