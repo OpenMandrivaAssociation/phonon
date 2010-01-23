@@ -155,10 +155,7 @@ browsing.
 
 %prep
 %setup -q  -n %name-%version
-%patch1 -p1
-%patch2 -p1
-%patch3 -p0
-%patch4 -p1
+%apply_patches
 
 %build
 %cmake_kde4 \
