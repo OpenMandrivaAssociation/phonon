@@ -4,7 +4,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.80
-Release: %mkrel 5
+Release: %mkrel 6
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -19,6 +19,7 @@ Patch2:  phonon-4.3.50-fix-decodebin-usage.patch
 # (cg) NB This version hack is only needed for 2010.0... added here too for ease of backporting
 Patch3:  phonon-4.3.50-ignore-pulse-version.patch
 Patch4:  phonon-4.3.80-pulsecleanup.patch
+Patch5:  phonon-4.3.80-pulse-devicemove-rejig.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
@@ -91,7 +92,7 @@ Obsoletes:      arts < %epoch_arts:1.5.10-9
 Obsoletes:      arts3 < %epoch_arts:1.5.10-9
 %endif
 
-Provides: phonon-backend = %epoch:%version
+Provides: phonon-backend
 
 %description -n phonon-gstreamer
 GStreamer backend to Phonon.
@@ -112,7 +113,7 @@ BuildRequires: libxine-devel
 Obsoletes: kde4-phonon-xine < 1:3.93.0-0.714129.2
 Requires: xine-plugins
 Suggests: xine-pulse
-Provides: phonon-backend = %epoch:%version
+Provides: phonon-backend
 
 %description -n phonon-xine
 Xine backend to Phonon.
