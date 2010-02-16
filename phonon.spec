@@ -10,7 +10,7 @@ Url: http://phonon.kde.org/
 License: LGPLv2+
 Group: Graphical desktop/KDE
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
-# We're using trunk http://svn.kde.org/home/kde/trunk/kdesupport/phonon
+# We're using git: http://gitorious.org/phonon
 Source0: %name-%version-r%rev.tar.bz2
 Source1: %{name}-gstreamer.svg
 Patch0:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
