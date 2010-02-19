@@ -15,6 +15,7 @@ Source0: %name-%version-r%rev.tar.bz2
 Source1: %{name}-gstreamer.svg
 Patch0:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
 Patch1:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
+#(nl) Merged upstream
 Patch2:  phonon-4.3.50-fix-decodebin-usage.patch
 # (cg) NB This version hack is only needed for 2010.0... added here too for ease of backporting
 Patch3:  phonon-4.3.50-ignore-pulse-version.patch
