@@ -1,5 +1,5 @@
 %define epoch_arts 30000001
-%define git 20100317
+%define git 20100330
 
 Name: phonon
 Summary: KDE4 Multimedia Framework 
@@ -13,9 +13,8 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-build
 # We're using git: http://gitorious.org/phonon
 Source0: %name-%version-%git.tar.bz2
 Source1: %{name}-gstreamer.svg
-Patch1:  phonon-4.3.80-pulse-connection-rejig.patch
-Patch2:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
-Patch3:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
+Patch1:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
+Patch2:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
 # (cg) NB This version hack is only needed for 2010.0... added here too for ease of backporting
 Patch4:  phonon-4.3.80-ignore-pulse-version.patch
 BuildRequires:  qt4-devel
