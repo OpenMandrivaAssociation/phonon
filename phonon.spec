@@ -4,7 +4,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.3.80
-Release: %mkrel 10.%{git}.1
+Release: %mkrel 10.%{git}.2
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -17,6 +17,7 @@ Patch1:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
 Patch2:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
 # (cg) NB This version hack is only needed for 2010.0... added here too for ease of backporting
 Patch4:  phonon-4.3.80-ignore-pulse-version.patch
+Patch5:  phonon-4.3.80-pulse-fix-utf8.patch
 BuildRequires:  qt4-devel
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
