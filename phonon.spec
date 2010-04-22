@@ -1,24 +1,23 @@
 %define epoch_arts 30000001
-%define git 20100330
 
 Name: phonon
 Summary: KDE4 Multimedia Framework 
-Version: 4.3.80
-Release: %mkrel 10.%{git}.2
+Version: 4.4.1
+Release: %mkrel 1
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
 Group: Graphical desktop/KDE
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 # We're using git: http://gitorious.org/phonon
-Source0: %name-%version-%git.tar.bz2
+Source0: ftp://ftp.kde.org/pub/kde/stable/phonon/%version/%name-%version.tar.bz2
 Source1: %{name}-gstreamer.svg
 Patch1:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
 Patch2:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
 # (cg) NB This version hack is only needed for 2010.0... added here too for ease of backporting
 Patch4:  phonon-4.3.80-ignore-pulse-version.patch
-Patch5:  phonon-4.3.80-pulse-fix-utf8.patch
-BuildRequires:  qt4-devel
+# (cg) Phonon 4.4.1 needs Qt 4.6+
+BuildRequires:  qt4-devel >= 4:4.6
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
 BuildRequires:  glib2-devel
