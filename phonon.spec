@@ -3,7 +3,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.4.1
-Release: %mkrel 3
+Release: %mkrel 4
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -18,6 +18,7 @@ Patch2:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
 Patch4:  phonon-4.3.80-ignore-pulse-version.patch
 Patch0100: 0100-xine-Initialise-volume-to-1.patch
 Patch0101: 0101-pulse-Fix-the-reading-of-stream-information-on-start.patch
+Patch0102: 0102-pulse-Hopefully-solve-erronious-error-message-relati.patch
 
 # (cg) Phonon 4.4.1 needs Qt 4.6+
 BuildRequires:  qt4-devel >= 4:4.6
