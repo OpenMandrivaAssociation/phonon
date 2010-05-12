@@ -3,7 +3,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.4.1
-Release: %mkrel 5
+Release: %mkrel 6
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -20,6 +20,9 @@ Patch5:  phonon-4.4.1-use-decodebin.patch
 Patch0100: 0100-xine-Initialise-volume-to-1.patch
 Patch0101: 0101-pulse-Fix-the-reading-of-stream-information-on-start.patch
 Patch0102: 0102-pulse-Hopefully-solve-erronious-error-message-relati.patch
+Patch0103: 0103-pulse-Some-signal-emission-protection-and-some-debug.patch
+Patch0104: 0104-gstreamer-Rejig-the-PulseAudio-detection-and-handlin.patch
+Patch0105: 0105-gstreamer-Move-some-code-inside-pointer-protection.patch
 
 # (cg) Phonon 4.4.1 needs Qt 4.6+
 BuildRequires:  qt4-devel >= 4:4.6
