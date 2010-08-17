@@ -3,7 +3,7 @@
 Name: phonon
 Summary: KDE4 Multimedia Framework 
 Version: 4.4.2
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
@@ -17,6 +17,7 @@ Patch2:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
 # (cg) NB This version hack is only needed for 2010.0... added here too for ease of backporting
 Patch4:  phonon-4.3.80-ignore-pulse-version.patch
 Patch5:  phonon-4.4.1-use-decodebin.patch
+Patch6:  0001-pulse-Protect-the-PulseSupport-object-creation-by-a-.patch
 
 # (cg) Phonon 4.4.1 needs Qt 4.6+
 BuildRequires:  qt4-devel >= 4:4.6
