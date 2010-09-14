@@ -1,16 +1,33 @@
+%define branch 1
+%{?_branch: %{expand: %%global branch 1}}
+
 %define epoch_arts 30000001
+
+%if %branch
+%define kde_snapshot git20100914
+%endif
+
+%define rel 1
 
 Name: phonon
 Summary: KDE4 Multimedia Framework 
-Version: 4.4.2
-Release: %mkrel 2
+Version: 4.4.3
+%if %branch
+Release: %mkrel -c %kde_snapshot %rel
+%else
+Release: %mkrel %rel
+%endif
 Epoch: 2
 Url: http://phonon.kde.org/
 License: LGPLv2+
 Group: Graphical desktop/KDE
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 # We're using git: http://gitorious.org/phonon
+%if %branch
+Source0: phonon-%{version}-%{kde_snapshot}.tar.bz2
+%else
 Source0: ftp://ftp.kde.org/pub/kde/stable/phonon/%version/%name-%version.tar.bz2
+%endif
 Source1: %{name}-gstreamer.svg
 Patch1:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
 Patch2:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
@@ -151,11 +168,16 @@ browsing.
 %{_kde_libdir}/libphononexperimental.so
 %{_kde_libdir}/pkgconfig/phonon.pc
 %{_kde_datadir}/dbus-1/interfaces/org.kde.Phonon.AudioOutput.xml
+%{qt4dir}/mkspecs/modules/qt_phonon.pri
 
 #--------------------------------------------------------------------
 
 %prep
+%if %branch
+%setup -q  -n %name
+%else
 %setup -q  -n %name-%version
+%endif
 %apply_patches
 
 %build
