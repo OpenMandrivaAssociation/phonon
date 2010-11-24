@@ -4,7 +4,7 @@
 %define epoch_arts 30000001
 
 %if %branch
-%define kde_snapshot git20100914
+%define kde_snapshot git20101121
 %endif
 
 %define rel 1
@@ -24,7 +24,7 @@ Group: Graphical desktop/KDE
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 # We're using git: http://gitorious.org/phonon
 %if %branch
-Source0: phonon-%{version}-%{kde_snapshot}.tar.bz2
+Source0: phonon-%{version}-%{kde_snapshot}.tar.xz
 %else
 Source0: ftp://ftp.kde.org/pub/kde/stable/phonon/%version/%name-%version.tar.bz2
 %endif
@@ -34,7 +34,6 @@ Patch2:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
 # (cg) NB This version hack is only needed for 2010.0... added here too for ease of backporting
 Patch4:  phonon-4.3.80-ignore-pulse-version.patch
 Patch5:  phonon-4.4.1-use-decodebin.patch
-Patch6:  0001-pulse-Protect-the-PulseSupport-object-creation-by-a-.patch
 
 # (cg) Phonon 4.4.1 needs Qt 4.6+
 BuildRequires:  qt4-devel >= 4:4.6
