@@ -7,7 +7,7 @@
 %define kde_snapshot git20101121
 %endif
 
-%define rel 2
+%define rel 1
 
 Name: phonon
 Summary: KDE4 Multimedia Framework 
@@ -102,10 +102,10 @@ Requires: gstreamer0.10-plugins-base
 Suggests: gstreamer0.10-ffmpeg
 Suggests: gstreamer0.10-soup
 Suggests: gstreamer0.10-pulse
-# (mikala) i keep thoses obsoletes commented but it's probably safe to simply drop them
-#Obsoletes:      arts < %epoch_arts:1.5.10-9
-#Obsoletes:      arts3 < %epoch_arts:1.5.10-9
-
+%if %mdkversion >= 201000
+Obsoletes:      arts < %epoch_arts:1.5.10-9
+Obsoletes:      arts3 < %epoch_arts:1.5.10-9
+%endif
 
 Provides: phonon-backend
 
@@ -198,6 +198,4 @@ done
 
 %clean
 rm -rf "%{buildroot}"
-
-
 
