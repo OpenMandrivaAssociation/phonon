@@ -11,7 +11,7 @@
 
 Name: phonon
 Summary: KDE4 Multimedia Framework 
-Version: 4.4.3
+Version: 4.4.4
 %if %branch
 Release: %mkrel -c %kde_snapshot %rel
 %else
@@ -28,19 +28,15 @@ Source0: phonon-%{version}-%{kde_snapshot}.tar.xz
 %else
 Source0: ftp://ftp.kde.org/pub/kde/stable/phonon/%version/%name-%version.tar.bz2
 %endif
-Source1: %{name}-gstreamer.svg
 Patch1:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
-Patch2:  phonon-4.3.50-gstreamer-fix-seekable-query-failed.patch
 # (cg) NB This version hack is only needed for 2010.0... added here too for ease of backporting
 Patch4:  phonon-4.3.80-ignore-pulse-version.patch
-Patch5:  phonon-4.4.1-use-decodebin.patch
 
 # (cg) Phonon 4.4.1 needs Qt 4.6+
 BuildRequires:  qt4-devel >= 4:4.6
 BuildRequires:  kde4-macros
 BuildRequires:  automoc
-BuildRequires:  glib2-devel
-BuildRequires:  libxml2-devel
+BuildRequires:	glib2-devel
 BuildRequires:  imagemagick
 BuildRequires:  pulseaudio-devel
 
@@ -90,56 +86,6 @@ Phonon library.
 %defattr(-,root,root)
 %_kde_libdir/libphonon.so.%{phonon_major}*
 
-#-----------------------------------------------------------------------------
-
-%package -n phonon-gstreamer
-Summary: GStreamer backend to Phonon
-Group: Sound
-BuildRequires: libgstreamer-devel
-BuildRequires: libgstreamer-plugins-base-devel
-Requires: gstreamer0.10-plugins-good
-Requires: gstreamer0.10-plugins-base
-Suggests: gstreamer0.10-ffmpeg
-Suggests: gstreamer0.10-soup
-Suggests: gstreamer0.10-pulse
-%if %mdkversion >= 201000
-Obsoletes:      arts < %epoch_arts:1.5.10-9
-Obsoletes:      arts3 < %epoch_arts:1.5.10-9
-%endif
-
-Provides: phonon-backend
-
-%description -n phonon-gstreamer
-GStreamer backend to Phonon.
-
-%files -n phonon-gstreamer
-%defattr(-,root,root)
-%dir %_kde_libdir/kde4/plugins/phonon_backend
-%_kde_libdir/kde4/plugins/phonon_backend/phonon_gstreamer.so
-%_kde_datadir/kde4/services/phononbackends/gstreamer.desktop
-%_datadir/icons/hicolor/*
-
-#-----------------------------------------------------------------------------
-
-%package -n phonon-xine
-Summary: Xine backend to Phonon
-Group: Sound
-BuildRequires: libxine-devel
-Obsoletes: kde4-phonon-xine < 1:3.93.0-0.714129.2
-Requires: xine-plugins
-Suggests: xine-pulse
-Provides: phonon-backend
-
-%description -n phonon-xine
-Xine backend to Phonon.
-
-%files -n phonon-xine
-%defattr(-,root,root)
-%dir %_kde_libdir/kde4/plugins/phonon_backend
-%_kde_libdir/kde4/plugins/phonon_backend/phonon_xine.so
-%_kde_datadir/kde4/services/phononbackends/xine.desktop
-%_kde_iconsdir/*/*/*/phonon-xine.*
-
 #--------------------------------------------------------------------
 
 %package   devel
@@ -166,6 +112,7 @@ browsing.
 %{_kde_libdir}/libphonon.so
 %{_kde_libdir}/libphononexperimental.so
 %{_kde_libdir}/pkgconfig/phonon.pc
+%{_kde_datadir}/phonon-buildsystem
 %{_kde_datadir}/dbus-1/interfaces/org.kde.Phonon.AudioOutput.xml
 %{qt4dir}/mkspecs/modules/qt_phonon.pri
 
@@ -188,13 +135,6 @@ browsing.
 %install
 rm -fr %buildroot
 %makeinstall_std -C build
-
-# Make a nice icon
-install -D -m 0644 %{_sourcedir}/%{name}-gstreamer.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}-gstreamer.svg
-for size in 16 22 32 48 64 128; do
-  mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps
-  convert -geometry ${size}x${size} %{_sourcedir}/%{name}-gstreamer.svg %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/%{name}-gstreamer.png
-done
 
 %clean
 rm -rf "%{buildroot}"
