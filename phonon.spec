@@ -11,7 +11,7 @@
 
 Name: phonon
 Summary: KDE4 Multimedia Framework 
-Version: 4.4.4
+Version: 4.5.0
 %if %branch
 Release: %mkrel -c %kde_snapshot %rel
 %else
@@ -114,6 +114,7 @@ browsing.
 %{_kde_libdir}/pkgconfig/phonon.pc
 %{_kde_datadir}/phonon-buildsystem
 %{_kde_datadir}/dbus-1/interfaces/org.kde.Phonon.AudioOutput.xml
+%{qt4plugins}/designer/libphononwidgets.so
 %{qt4dir}/mkspecs/modules/qt_phonon.pri
 
 #--------------------------------------------------------------------
