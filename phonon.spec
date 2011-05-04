@@ -7,7 +7,7 @@
 %define kde_snapshot git20101121
 %endif
 
-%define rel 1
+%define rel 2
 
 Name: phonon
 Summary: KDE4 Multimedia Framework 
