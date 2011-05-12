@@ -7,7 +7,7 @@
 %define kde_snapshot git20101121
 %endif
 
-%define rel 2
+%define rel 3
 
 Name: phonon
 Summary: KDE4 Multimedia Framework 
@@ -94,6 +94,7 @@ Summary:   Header files and documentation for compiling KDE applications
 Requires:  %libphononexperimental = %epoch:%version
 Requires:  %libphonon = %epoch:%version
 Conflicts: kdelibs4-devel < 4.0.80-5
+%rename qt4-designer-plugin-phonon
 Obsoletes: phonon-common
 %if %mdkversion >= 201000
 Obsoletes: arts-devel < %epoch_arts:1.5.10-9
