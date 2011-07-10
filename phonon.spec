@@ -58,9 +58,6 @@ Obsoletes: %{_lib}phononexperimental5 < 3.93.0-0.714006.1
 %description -n %libphononexperimental
 Phonon library.
 
-%post -n %libphononexperimental -p /sbin/ldconfig
-%postun -n %libphononexperimental -p /sbin/ldconfig
-
 %files -n %libphononexperimental
 %defattr(-,root,root)
 %_kde_libdir/libphononexperimental.so.%{phononexperimental_major}*
@@ -78,9 +75,6 @@ Obsoletes: %{_lib}phonon5 < 3.93.0-0.714006.1
 
 %description -n %libphonon
 Phonon library.
-
-%post -n %libphonon -p /sbin/ldconfig
-%postun -n %libphonon -p /sbin/ldconfig
 
 %files -n %libphonon
 %defattr(-,root,root)
