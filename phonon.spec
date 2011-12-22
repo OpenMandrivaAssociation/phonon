@@ -27,13 +27,13 @@ Phonon is the KDE4 Multimedia Framework
 %define libphononexperimental %mklibname phononexperimental %{major}
 
 %package -n %libphononexperimental
-Summary: Phonon library
+Summary: Phonon Library
 Group: System/Libraries
 Conflicts: %{_lib}kdecore5 >= 30000000:3.80.3
 Obsoletes: %{_lib}phononexperimental5 < 3.93.0-0.714006.1
 
 %description -n %libphononexperimental
-Phonon library.
+Library for Phonon.
 
 %files -n %libphononexperimental
 %{_libdir}/libphononexperimental.so.%{major}*
@@ -42,13 +42,13 @@ Phonon library.
 %define libphonon %mklibname phonon %{major}
 
 %package -n %libphonon
-Summary: Phonon library
+Summary: Phonon Library
 Group: System/Libraries
 Conflicts: %{_lib}kdecore5 >= 30000000:3.80.3
 Obsoletes: %{_lib}phonon5 < 3.93.0-0.714006.1
 
 %description -n %libphonon
-Phonon library.
+Library for Phonon.
 
 %files -n %libphonon
 %{_libdir}/libphonon.so.%{major}*
@@ -68,7 +68,7 @@ Designer plugin for phonon.
 #--------------------------------------------------------------------
 %package   devel
 Group:     Development/KDE and Qt
-Summary:   Header files and documentation for compiling KDE applications
+Summary:   Phonon Development Files
 Requires:  %libphononexperimental = %epoch:%version
 Requires:  %libphonon = %epoch:%version
 Requires:  phonon-designer-plugin = %epoch:%version
@@ -81,9 +81,7 @@ Obsoletes: arts3-devel < %epoch_arts:1.5.10-9
 %endif
 
 %description devel
-This package includes the header files you will need to compile applications
-for KDE. Also included is the KDE API documentation in HTML format for easy
-browsing.
+Header files needed to compile applications for KDE.
 
 %files devel
 %{_qt4_datadir}/mkspecs/modules/qt_phonon.pri
