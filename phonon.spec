@@ -14,6 +14,7 @@ Patch1:		phonon-4.6.50-phonon-allow-stop-empty-source.patch
 # (cg) NB This version hack is only needed for 2010.0... added here too for ease of backporting
 Source4:	phonon-4.3.80-ignore-pulse-version.patch
 # (cg) Phonon 4.4.1 needs Qt 4.6+
+BuildRequires:  cmake
 BuildRequires:  qt4-devel >= 4:4.6
 BuildRequires:  automoc4
 BuildRequires:	glib2-devel
@@ -100,7 +101,7 @@ Header files needed to compile applications for KDE.
 %apply_patches
 
 %build
-%cmake_qt4 \
+%cmake \
     -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON
 %make
 
