@@ -1,41 +1,21 @@
-%define branch 0
-%{?_branch: %{expand: %%global branch 1}}
-
+%define major 4
 %define epoch_arts 30000001
 
-%if %branch
-%define kde_snapshot git20101121
-%endif
-
-%define rel 4
-
-Name: phonon
-Summary: KDE4 Multimedia Framework 
-Version: 4.5.0
-%if %branch
-Release: %mkrel -c %kde_snapshot %rel
-%else
-Release: %mkrel %rel
-%endif
-Epoch: 2
-Url: http://phonon.kde.org/
-License: LGPLv2+
-Group: Graphical desktop/KDE
-BuildRoot: %{_tmppath}/%{name}-%{version}-build
-# We're using git: http://gitorious.org/phonon
-%if %branch
-Source0: phonon-%{version}-%{kde_snapshot}.tar.xz
-%else
-Source0: ftp://ftp.kde.org/pub/kde/stable/phonon/%version/%name-%version.tar.bz2
-%endif
-Patch1:  phonon-4.3.50-phonon-allow-stop-empty-source.patch
+Name:		phonon
+Summary:	KDE4 Multimedia Framework 
+Group:		Graphical desktop/KDE
+Version:	4.6.0
+Release:	1
+Epoch:		2
+URL:		http://phonon.kde.org/
+License:	LGPLv2+
+Source0:	ftp://ftp.kde.org/pub/kde/stable/phonon/%{version}/%{name}-%{version}.tar.xz
+Patch1:		phonon-4.6.50-phonon-allow-stop-empty-source.patch
 # (cg) NB This version hack is only needed for 2010.0... added here too for ease of backporting
-Patch4:  phonon-4.3.80-ignore-pulse-version.patch
-
+Source4:	phonon-4.3.80-ignore-pulse-version.patch
 # (cg) Phonon 4.4.1 needs Qt 4.6+
 BuildRequires:  qt4-devel >= 4:4.6
-BuildRequires:  kde4-macros
-BuildRequires:  automoc
+BuildRequires:  automoc4
 BuildRequires:	glib2-devel
 BuildRequires:  imagemagick
 BuildRequires:  pulseaudio-devel
@@ -44,9 +24,7 @@ BuildRequires:  pulseaudio-devel
 Phonon is the KDE4 Multimedia Framework
 
 #--------------------------------------------------------------------
-
-%define phononexperimental_major 4
-%define libphononexperimental %mklibname phononexperimental %phononexperimental_major
+%define libphononexperimental %mklibname phononexperimental %{major}
 
 %package -n %libphononexperimental
 Summary: Phonon library
@@ -54,18 +32,14 @@ Group: System/Libraries
 Conflicts: %{_lib}kdecore5 >= 30000000:3.80.3
 Obsoletes: %{_lib}phononexperimental5 < 3.93.0-0.714006.1
 
-
 %description -n %libphononexperimental
 Phonon library.
 
 %files -n %libphononexperimental
-%defattr(-,root,root)
-%_kde_libdir/libphononexperimental.so.%{phononexperimental_major}*
+%{_libdir}/libphononexperimental.so.%{major}*
 
 #--------------------------------------------------------------------
-
-%define phonon_major 4
-%define libphonon %mklibname phonon %phonon_major
+%define libphonon %mklibname phonon %{major}
 
 %package -n %libphonon
 Summary: Phonon library
@@ -77,16 +51,27 @@ Obsoletes: %{_lib}phonon5 < 3.93.0-0.714006.1
 Phonon library.
 
 %files -n %libphonon
-%defattr(-,root,root)
-%_kde_libdir/libphonon.so.%{phonon_major}*
+%{_libdir}/libphonon.so.%{major}*
 
 #--------------------------------------------------------------------
+%package designer-plugin
+Summary:	Phonon Designer Plugin
+Group:		System/Libraries
+Conflicts:	qt4-designer-plugin-phonon <= 5:4.7.4
 
+%description designer-plugin
+Designer plugin for phonon.
+
+%files designer-plugin
+%{_qt4_plugindir}/designer/libphononwidgets.so
+
+#--------------------------------------------------------------------
 %package   devel
 Group:     Development/KDE and Qt
 Summary:   Header files and documentation for compiling KDE applications
 Requires:  %libphononexperimental = %epoch:%version
 Requires:  %libphonon = %epoch:%version
+Requires:  phonon-designer-plugin = %epoch:%version
 Conflicts: kdelibs4-devel < 4.0.80-5
 Obsoletes: qt4-designer-plugin-phonon
 Obsoletes: phonon-common
@@ -101,37 +86,27 @@ for KDE. Also included is the KDE API documentation in HTML format for easy
 browsing.
 
 %files devel
-%defattr(-,root,root,-)
-%{_kde_includedir}/phonon
-%{_kde_includedir}/KDE
-%{_kde_libdir}/libphonon.so
-%{_kde_libdir}/libphononexperimental.so
-%{_kde_libdir}/pkgconfig/phonon.pc
-%{_kde_datadir}/phonon-buildsystem
-%{_kde_datadir}/dbus-1/interfaces/org.kde.Phonon.AudioOutput.xml
-%{qt4plugins}/designer/libphononwidgets.so
-%{qt4dir}/mkspecs/modules/qt_phonon.pri
+%{_qt4_datadir}/mkspecs/modules/qt_phonon.pri
+%{_datadir}/dbus-1/interfaces/org.kde.Phonon.AudioOutput.xml
+%{_datadir}/phonon/buildsystem/
+%{_includedir}/phonon/
+%{_includedir}/KDE/
+%{_libdir}/libphonon.so
+%{_libdir}/libphononexperimental.so
+%{_libdir}/pkgconfig/phonon.pc
+%{_libdir}/cmake/phonon/Phonon*.cmake
 
 #--------------------------------------------------------------------
-
 %prep
-%if %branch
-%setup -q  -n %name
-%else
-%setup -q  -n %name-%version
-%endif
+%setup -q
 %apply_patches
 
 %build
-%cmake_kde4 \
-	-DUSE_INSTALL_PLUGIN=TRUE
-
+%cmake_qt4 \
+    -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON
 %make
 
 %install
 rm -fr %buildroot
 %makeinstall_std -C build
-
-%clean
-rm -rf "%{buildroot}"
 
