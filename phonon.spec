@@ -65,7 +65,7 @@ Conflicts:	qt4-designer-plugin-phonon <= 5:4.7.4
 Designer plugin for phonon.
 
 %files designer-plugin
-%{_qt4_plugindir}/designer/libphononwidgets.so
+%{_qt_plugindir}/designer/libphononwidgets.so
 
 #--------------------------------------------------------------------
 %package devel
@@ -86,7 +86,7 @@ Obsoletes:	arts3-devel < %{epoch_arts}:1.5.10-9
 Header files needed to compile applications for KDE.
 
 %files devel
-%{_qt4_datadir}/mkspecs/modules/qt_phonon.pri
+%{_qt_datadir}/mkspecs/modules/qt_phonon.pri
 %{_datadir}/dbus-1/interfaces/org.kde.Phonon.AudioOutput.xml
 %{_datadir}/phonon/buildsystem/
 %{_includedir}/phonon/
