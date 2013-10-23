@@ -4,7 +4,7 @@ Name:		phonon
 Summary:	KDE4 Multimedia Framework 
 Group:		Graphical desktop/KDE
 Version:	4.6.0
-Release:	6
+Release:	7
 Epoch:		2
 URL:		http://phonon.kde.org/
 License:	LGPLv2+
