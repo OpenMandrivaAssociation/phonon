@@ -3,16 +3,17 @@
 Summary:	KDE4 Multimedia Framework
 Name:		phonon
 Version:	4.7.0
-Release:	1
+Release:	2
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://phonon.kde.org/
 Source0:	ftp://ftp.kde.org/pub/kde/stable/phonon/%{version}/%{name}-%{version}.tar.xz
-Patch1:		phonon-4.6.50-phonon-allow-stop-empty-source.patch
+Patch0:		phonon-4.6.50-phonon-allow-stop-empty-source.patch
+Patch1:		phonon-4.7.0-cmake.patch
+BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	imagemagick
-BuildRequires:	automoc4
 BuildRequires:	qt4-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpulse)
@@ -21,6 +22,7 @@ BuildRequires:	pkgconfig(libpulse)
 Phonon is the KDE4 Multimedia Framework.
 
 #--------------------------------------------------------------------
+
 %define libphononexperimental %mklibname phononexperimental %{major}
 
 %package -n %{libphononexperimental}
@@ -34,6 +36,7 @@ Library for Phonon.
 %{_libdir}/libphononexperimental.so.%{major}*
 
 #--------------------------------------------------------------------
+
 %define libphonon %mklibname phonon %{major}
 
 %package -n %{libphonon}
@@ -59,6 +62,7 @@ Designer plugin for phonon.
 %{_qt_plugindir}/designer/libphononwidgets.so
 
 #--------------------------------------------------------------------
+
 %package devel
 Group:		Development/KDE and Qt
 Summary:	Phonon Development Files
