@@ -1,12 +1,12 @@
 diff -urN phonon-4.7.0/PhononConfig.cmake.in phonon-4.7.0-patched/PhononConfig.cmake.in
 --- phonon-4.7.0/PhononConfig.cmake.in	2013-11-05 03:49:06.000000000 +1100
-+++ phonon-4.7.0-patched/PhononConfig.cmake.in	2013-11-06 13:50:11.583719359 +1100
-@@ -14,7 +14,7 @@
- set(PHONON_INCLUDE_DIR "${rootDir}/@INCLUDE_INSTALL_DIR@")
++++ phonon-4.7.0-patched/PhononConfig.cmake.in	2013-11-10 00:50:53.536307980 +1100
+@@ -4,7 +4,7 @@
+ set(PHONON_VERSION "@PHONON_LIB_MAJOR_VERSION@.@PHONON_LIB_MINOR_VERSION@.@PHONON_LIB_PATCH_VERSION@")
  
- set(PHONON_LIBRARY_DIR "${rootDir}/@LIB_INSTALL_DIR@")
--set(PHONON_BUILDSYSTEM_DIR "${rootDir}/@BUILDSYSTEM_INSTALL_DIR@")
-+set(PHONON_BUILDSYSTEM_DIR "${rootDir}/usr/@BUILDSYSTEM_INSTALL_DIR@")
- set(PHONON_LIB_SONAME "@PHONON_LIB_SONAME@")
+ get_filename_component(currentDir ${CMAKE_CURRENT_LIST_FILE} PATH) # get the directory where I myself am
+-get_filename_component(rootDir ${currentDir}/@relInstallDir@ ABSOLUTE) # get the chosen install prefix
++get_filename_component(rootDir /usr ABSOLUTE) # get the chosen install prefix
  
- if(NOT TARGET Phonon::@PHONON_LIB_SONAME@)
+ set(PHONON_NO_GRAPHICSVIEW @PHONON_NO_GRAPHICSVIEW@)
+ set(PHONON_PULSESUPPORT @PHONON_PULSESUPPORT@)

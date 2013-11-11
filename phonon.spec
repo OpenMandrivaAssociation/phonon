@@ -3,7 +3,7 @@
 Summary:	KDE4 Multimedia Framework
 Name:		phonon
 Version:	4.7.0
-Release:	2
+Release:	4
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
@@ -11,10 +11,13 @@ Url:		http://phonon.kde.org/
 Source0:	ftp://ftp.kde.org/pub/kde/stable/phonon/%{version}/%{name}-%{version}.tar.xz
 Patch0:		phonon-4.6.50-phonon-allow-stop-empty-source.patch
 Patch1:		phonon-4.7.0-cmake.patch
+Patch2:		0003-fix-rpath-handling.patch
+Patch3:		phonon-4.7.0-qdebug-capturecategory.patch
 BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	imagemagick
 BuildRequires:	qt4-devel
+BuildRequires:	qt4-qmlviewer
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpulse)
 

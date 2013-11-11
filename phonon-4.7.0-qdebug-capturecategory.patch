@@ -1,0 +1,16 @@
+diff -urN phonon-4.7.0/phonon/phononnamespace.cpp phonon-4.7.0-patched/phonon/phononnamespace.cpp
+--- phonon-4.7.0/phonon/phononnamespace.cpp	2013-11-05 03:49:06.000000000 +1100
++++ phonon-4.7.0-patched/phonon/phononnamespace.cpp	2013-11-12 00:02:08.752752904 +1100
+@@ -167,6 +167,12 @@
+         return dbg.maybeSpace();
+     }
+ 
++    QDebug  operator <<(QDebug dbg, const Phonon::CaptureCategory &category)
++    {
++        dbg.space() << categoryToString(category);
++        return dbg.maybeSpace();
++    }
++
+     QDebug operator <<(QDebug dbg, const Phonon::Capture::DeviceType &type)
+     {
+         switch (type) {
