@@ -11,7 +11,6 @@ Url:		http://phonon.kde.org/
 Source0:	ftp://ftp.kde.org/pub/kde/stable/phonon/%{version}/%{name}-%{version}.tar.xz
 Patch0:		phonon-4.6.50-phonon-allow-stop-empty-source.patch
 Patch1:		phonon-4.7.0-cmake.patch
-Patch3:		phonon-4.7.0-qdebug-capturecategory.patch
 BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	imagemagick
