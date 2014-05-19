@@ -3,7 +3,7 @@
 Summary:	KDE4 Multimedia Framework
 Name:		phonon
 Version:	4.7.1
-Release:	1
+Release:	2
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
@@ -16,6 +16,14 @@ BuildRequires:	cmake
 BuildRequires:	imagemagick
 BuildRequires:	qt4-devel
 BuildRequires:	qt4-qmlviewer
+BuildRequires:	qt5-devel
+BuildRequires:	qmake5
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5DBus)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5Designer)
+BuildRequires:	qt5-platformtheme-gtk2
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpulse)
 
@@ -38,6 +46,21 @@ Library for Phonon.
 
 #--------------------------------------------------------------------
 
+%define libphonon4qt5experimental %mklibname phonon4qt5experimental %{major}
+
+%package -n %{libphonon4qt5experimental}
+Summary:	Phonon Library
+Group:		System/Libraries
+
+%description -n %{libphonon4qt5experimental}
+Library for Phonon.
+
+%files -n %{libphonon4qt5experimental}
+%{_libdir}/libphonon4qt5experimental.so.%{major}*
+
+
+#--------------------------------------------------------------------
+
 %define libphonon %mklibname phonon %{major}
 
 %package -n %{libphonon}
@@ -51,6 +74,21 @@ Library for Phonon.
 %{_libdir}/libphonon.so.%{major}*
 
 #--------------------------------------------------------------------
+
+%define libphonon4qt5 %mklibname phonon4qt5 %{major}
+
+%package -n %{libphonon4qt5}
+Summary:	Phonon Library
+Group:		System/Libraries
+
+%description -n %{libphonon4qt5}
+Library for Phonon.
+
+%files -n %{libphonon4qt5}
+%{_libdir}/libphonon4qt5.so.%{major}*
+
+
+#--------------------------------------------------------------------
 %package designer-plugin
 Summary:	Phonon Designer Plugin
 Group:		System/Libraries
@@ -61,6 +99,17 @@ Designer plugin for phonon.
 
 %files designer-plugin
 %{_qt_plugindir}/designer/libphononwidgets.so
+
+#--------------------------------------------------------------------
+%package -n phonon4qt5-designer-plugin
+Summary:	Phonon Designer Plugin
+Group:		System/Libraries
+
+%description -n phonon4qt5-designer-plugin
+Designer plugin for phonon for Qt 5.
+
+%files -n phonon4qt5-designer-plugin
+%{_libdir}/qt5/plugins/designer/libphononwidgets.so
 
 #--------------------------------------------------------------------
 
@@ -83,7 +132,30 @@ Header files needed to compile applications for KDE.
 %{_libdir}/libphonon.so
 %{_libdir}/libphononexperimental.so
 %{_libdir}/pkgconfig/phonon.pc
-%{_libdir}/cmake/phonon/Phonon*.cmake
+%{_libdir}/cmake/phonon
+
+#--------------------------------------------------------------------
+
+%package -n phonon4qt5-devel
+Group:		Development/KDE and Qt
+Summary:	Phonon Development Files
+Requires:	%{libphonon4qt5experimental} = %{EVRD}
+Requires:	%{libphonon4qt5} = %{EVRD}
+Requires:	phonon4qt5-designer-plugin = %{EVRD}
+
+%description -n phonon4qt5-devel
+Header files needed to compile applications for KDE.
+
+%files -n phonon4qt5-devel
+%{_libdir}/qt5/mkspecs/modules/qt_phonon4qt5.pri
+%{_datadir}/dbus-1/interfaces/org.kde.Phonon4Qt5.AudioOutput.xml
+%{_datadir}/phonon4qt5/buildsystem/
+%{_includedir}/phonon4qt5/
+%{_libdir}/libphonon4qt5.so
+%{_libdir}/libphonon4qt5experimental.so
+%{_libdir}/pkgconfig/phonon4qt5.pc
+%{_libdir}/cmake/phonon4qt5
+
 
 #--------------------------------------------------------------------
 
@@ -91,12 +163,27 @@ Header files needed to compile applications for KDE.
 %setup -q
 %apply_patches
 
+mkdir Qt4
+mv `ls -1 |grep -v Qt4` Qt4
+cp -a Qt4 Qt5
+
 %build
+cd Qt4
 %cmake \
 	-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON
 
 %make
 
+cd ../../Qt5
+%cmake \
+	-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON \
+	-DPHONON_BUILD_PHONON4QT5=ON
+%make
+
+
 %install
+cd Qt4
 %makeinstall_std -C build
 
+cd ../Qt5
+%makeinstall_std -C build
