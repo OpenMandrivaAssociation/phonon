@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   phonon-4.7.2.tar.xz: 2b98fa96cefbbef53d77dd0e6d830889da367c37
+sources:
+  phonon-4.8.0.tar.xz: b01da88ddba0d2d501bf1b6bb86abbff61ab6a12
