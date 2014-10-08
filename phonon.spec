@@ -3,7 +3,7 @@
 Summary:	KDE4 Multimedia Framework
 Name:		phonon
 Version:	4.8.0
-Release:	1
+Release:	2
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
@@ -168,6 +168,11 @@ mv `ls -1 |grep -v Qt4` Qt4
 cp -a Qt4 Qt5
 
 %build
+#(tpg) potential fix is to revert some of clang extra flags
+# https://projects.kde.org/projects/kdesupport/phonon/phonon/repository/diff/cmake/FindPhononInternal.cmake?rev=8d76bf786cc6cac61a7fe0045f3cc161ae6234f0&type=inline
+export CC=gcc
+export CXX=g++
+
 cd Qt4
 %cmake \
 	-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON
