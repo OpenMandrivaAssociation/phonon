@@ -22,7 +22,6 @@ BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Designer)
-BuildRequires:	qt5-platformtheme-gtk2
 BuildRequires:	qt5-designer
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpulse)
