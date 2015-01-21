@@ -23,6 +23,7 @@ BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Designer)
 BuildRequires:	qt5-designer
+BuildRequires:	qt5-qtquick-qmlviewer
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpulse)
 
