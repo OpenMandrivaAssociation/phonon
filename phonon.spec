@@ -3,7 +3,7 @@
 Summary:	KDE4 Multimedia Framework
 Name:		phonon
 Version:	4.8.3
-Release:	1
+Release:	2
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
@@ -13,11 +13,14 @@ Patch0:		phonon-4.6.50-phonon-allow-stop-empty-source.patch
 BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	imagemagick
+# Qt4 old stuff
 BuildRequires:	qt4-devel
 BuildRequires:	qt4-qmlviewer
-BuildRequires:	qt5-devel
+# Qt5 new stuff
 BuildRequires:	qmake5
 BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Declarative)
+BuildRequires:	pkgconfig(Qt5OpenGL)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Widgets)
