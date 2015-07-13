@@ -1,4 +1,5 @@
 %define major 4
+%define debugcflags %nil
 
 Summary:	KDE4 Multimedia Framework
 Name:		phonon
