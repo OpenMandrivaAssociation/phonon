@@ -4,7 +4,7 @@
 Summary:	KDE4 Multimedia Framework
 Name:		phonon
 Version:	4.8.3
-Release:	4
+Release:	5
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
