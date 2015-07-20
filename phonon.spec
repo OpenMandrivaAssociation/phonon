@@ -1,5 +1,6 @@
 %define major 4
 %define debugcflags %nil
+%define debug_package %nil
 
 Summary:	KDE4 Multimedia Framework
 Name:		phonon
@@ -173,7 +174,8 @@ cp -a Qt4 Qt5
 %build
 cd Qt4
 %cmake \
-	-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON
+	-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=ON \
+	-DQT_QMAKE_EXECUTABLE=/usr/lib/qt4/bin/qmake
 
 %make
 
