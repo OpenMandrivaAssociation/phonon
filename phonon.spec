@@ -5,12 +5,12 @@
 Summary:	KDE4 Multimedia Framework
 Name:		phonon
 Version:	4.8.3
-Release:	6
+Release:	7
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://phonon.kde.org/
-Source0:	ftp://ftp.kde.org/pub/kde/stable/phonon/%{version}/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/stable/phonon/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:		phonon-4.6.50-phonon-allow-stop-empty-source.patch
 BuildRequires:	automoc4
 BuildRequires:	cmake
