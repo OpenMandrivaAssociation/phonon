@@ -12,6 +12,7 @@ Group:		Graphical desktop/KDE
 Url:		http://phonon.kde.org/
 Source0:	http://download.kde.org/stable/phonon/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:		phonon-4.6.50-phonon-allow-stop-empty-source.patch
+Patch1:		phonon-dont-override-cflags.patch
 BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	imagemagick
