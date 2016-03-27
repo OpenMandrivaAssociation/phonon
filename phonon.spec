@@ -20,6 +20,8 @@ Patch3:		0002-Don-t-allocate-a-char-with-an-undefined-size.patch
 Patch4:		0003-Fix-build-with-Qt-5.4.2.patch
 Patch5:		0004-Specify-_include-dirs-as-INCLUDE_DIRECTORIES.patch
 Patch6:		0005-Yet-another-_include_dirs-fix.patch
+# (tpg) patch from Gentoo
+Patch7:		phonon-4.8.3-gcc5.patch
 BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	imagemagick
