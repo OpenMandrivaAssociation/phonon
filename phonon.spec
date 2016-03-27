@@ -13,6 +13,11 @@ Url:		http://phonon.kde.org/
 Source0:	http://download.kde.org/stable/phonon/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:		phonon-4.6.50-phonon-allow-stop-empty-source.patch
 Patch1:		phonon-dont-override-cflags.patch
+# (tpg) patches from Fedora
+Patch3:		0002-Don-t-allocate-a-char-with-an-undefined-size.patch
+Patch4:		0003-Fix-build-with-Qt-5.4.2.patch
+Patch5:		0004-Specify-_include-dirs-as-INCLUDE_DIRECTORIES.patch
+Patch6:		0005-Yet-another-_include_dirs-fix.patch
 BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	imagemagick
