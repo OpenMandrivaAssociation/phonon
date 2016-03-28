@@ -1,5 +1,3 @@
-%define _disable_lto 1
-
 %define major 4
 %define debugcflags %nil
 %define debug_package %nil
