@@ -1,0 +1,20 @@
+--- Qt5/cmake/FindPhononInternal.cmake.omv~	2016-03-28 16:22:26.436556614 +0200
++++ Qt5/cmake/FindPhononInternal.cmake	2016-03-28 16:22:56.291248708 +0200
+@@ -397,7 +397,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
+       file(WRITE "${_source_file}" "${_source}")
+       set(_include_dirs "-DINCLUDE_DIRECTORIES:STRING=${QT_INCLUDES}")
+ 
+-      try_compile(_compile_result ${CMAKE_BINARY_DIR} ${_source_file} CMAKE_FLAGS "${CMAKE_CXX_FLAGS}" COMPILE_DEFINITIONS "${_include_dirs}" OUTPUT_VARIABLE _compile_output_var)
++      try_compile(_compile_result ${CMAKE_BINARY_DIR} ${_source_file} CMAKE_FLAGS "${CMAKE_CXX_FLAGS}" LINK_LIBRARIES Qt5Core COMPILE_DEFINITIONS "${_include_dirs}" OUTPUT_VARIABLE _compile_output_var)
+ 
+       if(NOT _compile_result)
+          message("${_compile_output_var}")
+@@ -457,7 +457,7 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clan
+    set(_source_file ${CMAKE_BINARY_DIR}/CMakeTmp/check_qt_visibility.cpp)
+    file(WRITE "${_source_file}" "${_source}")
+    set(_include_dirs "-DINCLUDE_DIRECTORIES:STRING=${QT_INCLUDES}")
+-   try_compile(_compile_result ${CMAKE_BINARY_DIR} ${_source_file} CMAKE_FLAGS "${_include_dirs}" OUTPUT_VARIABLE _compile_output_var)
++   try_compile(_compile_result ${CMAKE_BINARY_DIR} ${_source_file} CMAKE_FLAGS "${_include_dirs}" LINK_LIBRARIES Qt5Core OUTPUT_VARIABLE _compile_output_var)
+    if(NOT _compile_result)
+        message("${_compile_output_var}")
+        message(FATAL_ERROR "Qt compiled without support for -fvisibility=hidden. This will break plugins and linking of some applications. Please fix your Qt installation (try passing --reduce-exports to configure).")

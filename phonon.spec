@@ -5,7 +5,7 @@
 Summary:	KDE4 Multimedia Framework
 Name:		phonon
 Version:	4.8.3
-Release:	9
+Release:	10
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
@@ -20,6 +20,7 @@ Patch5:		0004-Specify-_include-dirs-as-INCLUDE_DIRECTORIES.patch
 Patch6:		0005-Yet-another-_include_dirs-fix.patch
 # (tpg) patch from Gentoo
 Patch7:		phonon-4.8.3-gcc5.patch
+Patch8:		phonon-fix-visibility-detection.patch
 BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	imagemagick
