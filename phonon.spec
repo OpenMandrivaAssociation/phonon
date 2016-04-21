@@ -4,23 +4,14 @@
 
 Summary:	KDE4 Multimedia Framework
 Name:		phonon
-Version:	4.8.3
-Release:	10
+Version:	4.9.0
+Release:	1
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://phonon.kde.org/
-Source0:	http://download.kde.org/stable/phonon/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/stable/phonon/%{version}/%{name}-%{version}.tar.xz
 Patch0:		phonon-4.6.50-phonon-allow-stop-empty-source.patch
-Patch1:		phonon-dont-override-cflags.patch
-# (tpg) patches from Fedora
-Patch3:		0002-Don-t-allocate-a-char-with-an-undefined-size.patch
-Patch4:		0003-Fix-build-with-Qt-5.4.2.patch
-Patch5:		0004-Specify-_include-dirs-as-INCLUDE_DIRECTORIES.patch
-Patch6:		0005-Yet-another-_include_dirs-fix.patch
-# (tpg) patch from Gentoo
-Patch7:		phonon-4.8.3-gcc5.patch
-Patch8:		phonon-fix-visibility-detection.patch
 BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	imagemagick
@@ -122,7 +113,7 @@ Group:		System/Libraries
 Designer plugin for phonon for Qt 5.
 
 %files -n phonon4qt5-designer-plugin
-%{_libdir}/qt5/plugins/designer/libphononwidgets.so
+%{_libdir}/qt5/plugins/designer/phononwidgets.so
 
 #--------------------------------------------------------------------
 
