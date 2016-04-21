@@ -30,6 +30,7 @@ BuildRequires:	pkgconfig(Qt5Designer)
 BuildRequires:	qt5-designer
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpulse)
+BuildRequires:	cmake(ECM)
 
 %description
 Phonon is the KDE4 Multimedia Framework.
