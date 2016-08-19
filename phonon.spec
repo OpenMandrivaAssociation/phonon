@@ -21,7 +21,6 @@ BuildRequires:	qt4-qmlviewer
 # Qt5 new stuff
 BuildRequires:	qmake5
 BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5Declarative)
 BuildRequires:	pkgconfig(Qt5OpenGL)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5DBus)
