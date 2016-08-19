@@ -5,7 +5,7 @@
 Summary:	KDE4 Multimedia Framework
 Name:		phonon
 Version:	4.9.0
-Release:	2
+Release:	3
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
@@ -178,6 +178,7 @@ cd Qt4
 	-DCMAKE_BUILD_TYPE:STRING="Release" \
 	-DQT_QMAKE_EXECUTABLE=/usr/lib/qt4/bin/qmake \
 	-DPHONON_INSTALL_QT_COMPAT_HEADERS:BOOL=ON \
+	-DWITH_PulseAudio=ON \
 	-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT:BOOL=ON
 
 %make
@@ -187,6 +188,7 @@ cd ../../Qt5
 	-DCMAKE_BUILD_TYPE:STRING="Release" \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-DPHONON_BUILD_PHONON4QT5:BOOL=ON \
+	-DWITH_PulseAudio=ON \
 	-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT:BOOL=ON
 %make
 
