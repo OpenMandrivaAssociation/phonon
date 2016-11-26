@@ -25,8 +25,11 @@ BuildRequires:	pkgconfig(Qt5OpenGL)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5Declarative)
 %if %mdvver <= 3000000
 BuildRequires:	pkgconfig(Qt5Designer)
+%else
+BuildRequires:	pkgconfig(Qt5UiTools)
 %endif
 BuildRequires:	qt5-designer
 BuildRequires:	pkgconfig(glib-2.0)
