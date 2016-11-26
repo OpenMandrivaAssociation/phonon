@@ -5,7 +5,7 @@
 Summary:	KDE4 Multimedia Framework
 Name:		phonon
 Version:	4.9.0
-Release:	4
+Release:	5
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
@@ -25,7 +25,9 @@ BuildRequires:	pkgconfig(Qt5OpenGL)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Widgets)
+%if %mdvver <= 3000000
 BuildRequires:	pkgconfig(Qt5Designer)
+%endif
 BuildRequires:	qt5-designer
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpulse)
