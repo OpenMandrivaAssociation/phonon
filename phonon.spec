@@ -2,10 +2,10 @@
 %define debugcflags %nil
 %define debug_package %nil
 
-Summary:	KDE4 Multimedia Framework
+Summary:	Plasma Multimedia Framework
 Name:		phonon
-Version:	4.9.0
-Release:	5
+Version:	4.9.1
+Release:	1
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
@@ -37,7 +37,7 @@ BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	cmake(ECM)
 
 %description
-Phonon is the KDE4 Multimedia Framework.
+Phonon is the Plasma Multimedia Framework.
 
 #--------------------------------------------------------------------
 
