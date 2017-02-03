@@ -2,10 +2,10 @@
 %define debugcflags %nil
 %define debug_package %nil
 
-Summary:	KDE4 Multimedia Framework
+Summary:	Plasma Multimedia Framework
 Name:		phonon
-Version:	4.9.0
-Release:	3
+Version:	4.9.1
+Release:	1
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
@@ -21,19 +21,23 @@ BuildRequires:	qt4-qmlviewer
 # Qt5 new stuff
 BuildRequires:	qmake5
 BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5Declarative)
 BuildRequires:	pkgconfig(Qt5OpenGL)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5Declarative)
+%if %mdvver <= 3000000
 BuildRequires:	pkgconfig(Qt5Designer)
+%else
+BuildRequires:	pkgconfig(Qt5UiTools)
+%endif
 BuildRequires:	qt5-designer
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	cmake(ECM)
 
 %description
-Phonon is the KDE4 Multimedia Framework.
+Phonon is the Plasma Multimedia Framework.
 
 #--------------------------------------------------------------------
 
