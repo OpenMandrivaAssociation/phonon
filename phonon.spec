@@ -4,7 +4,7 @@
 
 Summary:	Plasma Multimedia Framework
 Name:		phonon
-Version:	4.10.0
+Version:	4.10.1
 Release:	1
 Epoch:		2
 License:	LGPLv2+
