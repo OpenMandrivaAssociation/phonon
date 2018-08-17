@@ -3,12 +3,12 @@
 %define debug_package %nil
 
 # (tpg) if disabled then phonon-devel is empty
-%bcond_without qt4
+%bcond_with qt4
 
 Summary:	Plasma Multimedia Framework
 Name:		phonon
 Version:	4.10.1
-Release:	4
+Release:	5
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
@@ -202,6 +202,7 @@ cd ../../Qt5
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-DPHONON_BUILD_PHONON4QT5:BOOL=ON \
 	-DWITH_PulseAudio=ON \
+	-DPHONON_INSTALL_QT_COMPAT_HEADERS:BOOL=ON \
 	-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT:BOOL=ON \
 	-G Ninja
 %ninja_build
