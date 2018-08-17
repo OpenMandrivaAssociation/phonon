@@ -2,12 +2,13 @@
 %define debugcflags %nil
 %define debug_package %nil
 
-%bcond_with qt4
+# (tpg) if disabled then phonon-devel is empty
+%bcond_without qt4
 
 Summary:	Plasma Multimedia Framework
 Name:		phonon
 Version:	4.10.1
-Release:	3
+Release:	4
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
@@ -31,11 +32,11 @@ BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Quick)
 BuildRequires:	pkgconfig(Qt5UiTools)
+BuildRequires:	pkgconfig(Qt5Declarative)
 BuildRequires:	qt5-designer
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	cmake(ECM)
-BuildRequires:	cmake
 BuildRequires:	ninja
 
 %description
