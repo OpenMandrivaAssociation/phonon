@@ -32,7 +32,7 @@ BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Quick)
 BuildRequires:	pkgconfig(Qt5UiTools)
-BuildRequires:	pkgconfig(Qt5Declarative)
+BuildRequires:	pkgconfig(Qt5Quick)
 BuildRequires:	qt5-designer
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpulse)
