@@ -7,7 +7,7 @@
 
 Summary:	Plasma Multimedia Framework
 Name:		phonon
-Version:	4.10.2
+Version:	4.10.3
 Release:	1
 Epoch:		2
 License:	LGPLv2+
@@ -42,6 +42,8 @@ BuildRequires:	ninja
 %description
 Phonon is the Plasma Multimedia Framework.
 
+%files -f %{name}.lang
+
 #--------------------------------------------------------------------
 
 %define libphonon4qt5experimental %mklibname phonon4qt5experimental %{major}
@@ -63,6 +65,8 @@ Library for Phonon.
 %package -n %{libphonon4qt5}
 Summary:	Phonon Library
 Group:		System/Libraries
+# The %{name} package contains only translations
+Recommends:	%{name} = %{EVRD}
 
 %description -n %{libphonon4qt5}
 Library for Phonon.
@@ -216,3 +220,8 @@ cd ../Qt5
 %endif
 
 %ninja_install -C build
+
+find %{buildroot}%{_datadir}/locale -name "*.qm" |while read r; do
+	L=`echo $r |rev |cut -d/ -f3 |rev`
+	echo "%%lang($L) %%{_datadir}/locale/$L/LC_MESSAGES/*.qm" >>%{name}.lang
+done
