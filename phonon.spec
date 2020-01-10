@@ -179,7 +179,7 @@ Designer plugin for phonon.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %if %{with qt4}
 mkdir Qt4
