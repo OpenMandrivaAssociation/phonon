@@ -8,7 +8,7 @@
 Summary:	Plasma Multimedia Framework
 Name:		phonon
 Version:	4.11.1
-Release:	1
+Release:	2
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
@@ -67,7 +67,7 @@ Library for Phonon.
 Summary:	Phonon Library
 Group:		System/Libraries
 # The %{name} package contains only translations and the phononsettings tool
-Recommends:	%{name} = %{EVRD}
+Requires:	%{name} = %{EVRD}
 
 %description -n %{libphonon4qt5}
 Library for Phonon.
@@ -183,7 +183,7 @@ Designer plugin for phonon.
 
 %if %{with qt4}
 mkdir Qt4
-mv `ls -1 |grep -v Qt4` Qt4
+mv $(ls -1 |grep -v Qt4) Qt4
 cp -a Qt4 Qt5
 %endif
 
@@ -197,7 +197,7 @@ cd Qt4
 	-DWITH_PulseAudio=ON \
 	-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT:BOOL=ON
 
-%make
+%make_build
 cd ../../Qt5
 %endif
 
@@ -215,13 +215,13 @@ cd ../../Qt5
 %install
 %if %{with qt4}
 cd Qt4
-%makeinstall_std -C build
+%make_install -C build
 cd ../Qt5
 %endif
 
 %ninja_install -C build
 
 find %{buildroot}%{_datadir}/locale -name "*.qm" |while read r; do
-	L=`echo $r |rev |cut -d/ -f3 |rev`
-	echo "%%lang($L) %%{_datadir}/locale/$L/LC_MESSAGES/$(basename $r)" >>%{name}.lang
+    L=$(echo $r |rev |cut -d/ -f3 |rev)
+    echo "%%lang($L) %%{_datadir}/locale/$L/LC_MESSAGES/$(basename $r)" >>%{name}.lang
 done
