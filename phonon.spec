@@ -9,8 +9,6 @@ License:	LGPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://phonon.kde.org/
 Source0:	http://download.kde.org/stable/phonon/%{version}/%{name}-%{version}.tar.xz
-Patch0:		phonon-4.6.50-phonon-allow-stop-empty-source.patch
-
 BuildRequires:	imagemagick
 BuildRequires:	qmake5
 BuildRequires:	pkgconfig(Qt5Core)
