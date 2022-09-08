@@ -3,7 +3,7 @@
 Summary:	Plasma Multimedia Framework
 Name:		phonon
 Version:	4.11.1
-Release:	6
+Release:	7
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
