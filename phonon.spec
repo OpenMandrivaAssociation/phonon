@@ -9,6 +9,7 @@ License:	LGPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://phonon.kde.org/
 Source0:	http://download.kde.org/stable/phonon/%{version}/%{name}-%{version}.tar.xz
+Patch0:		phonon-4.11.1-clang16-gcc13.patch
 BuildRequires:	imagemagick
 BuildRequires:	qmake5
 BuildRequires:	pkgconfig(Qt5Core)
@@ -98,7 +99,6 @@ Header files needed to compile applications for KDE.
 
 %prep
 %autosetup -p1
-%autopatch -p1
 
 %build
 %cmake_qt5 \
