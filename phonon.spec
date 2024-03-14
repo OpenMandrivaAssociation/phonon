@@ -2,14 +2,13 @@
 
 Summary:	Plasma Multimedia Framework
 Name:		phonon
-Version:	4.11.1
-Release:	11
+Version:	4.12.0
+Release:	1
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://phonon.kde.org/
 Source0:	http://download.kde.org/stable/phonon/%{version}/%{name}-%{version}.tar.xz
-Patch0:		phonon-4.11.1-clang16-gcc13.patch
 BuildRequires:	imagemagick
 BuildRequires:	qmake5
 BuildRequires:	pkgconfig(Qt5Core)
@@ -72,7 +71,7 @@ Group:		System/Libraries
 Designer plugin for phonon for Qt 5.
 
 %files -n phonon4qt5-designer-plugin
-%{_libdir}/qt5/plugins/designer/phononwidgets.so
+%{_libdir}/qt5/plugins/designer/phonon4qt5widgets.so
 
 #--------------------------------------------------------------------
 
@@ -88,7 +87,6 @@ Header files needed to compile applications for KDE.
 
 %files -n phonon4qt5-devel
 %{_libdir}/qt5/mkspecs/modules/qt_phonon4qt5.pri
-%{_datadir}/phonon4qt5/buildsystem/
 %{_includedir}/phonon4qt5/
 %{_libdir}/libphonon4qt5.so
 %{_libdir}/libphonon4qt5experimental.so
@@ -102,6 +100,8 @@ Header files needed to compile applications for KDE.
 
 %build
 %cmake_qt5 \
+	-DPHONON_BUILD_QT5:BOOL=ON \
+	-DPHONON_BUILD_QT6:BOOL=OFF \
 	-DCMAKE_BUILD_TYPE:STRING="Release" \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-DPHONON_BUILD_PHONON4QT5:BOOL=ON \
