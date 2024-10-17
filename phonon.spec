@@ -7,7 +7,7 @@ Release:	2
 Epoch:		2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
-Url:		http://phonon.kde.org/
+Url:		https://phonon.kde.org/
 Source0:	http://download.kde.org/stable/phonon/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:	imagemagick
 BuildRequires:	qmake5
